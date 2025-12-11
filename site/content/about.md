@@ -1,31 +1,46 @@
 ---
-title: "About"
+title: "About Candidex"
 ShowToc: false
 ShowBreadCrumbs: false
 ---
 
-## About This Blog
+## What is Candidex?
 
-A technical blog exploring AI, cloud architecture, and modern software development practices.
+**Candidex** is an AI-powered candidate matching system that transforms how HR departments find talent. Instead of relying on keyword matching that misses great candidates, Candidex uses Large Language Models (LLMs) and semantic search to understand what recruiters actually need.
 
-## Current Series
+## The Story
 
-### Candidex Series
+This blog documents our journey building Candidex:
 
-A 5-part deep dive into building an AI-powered CV matching system:
+- 🏗️ **The Challenge**: Why traditional CV screening fails at scale
+- ☁️ **Azure to AWS**: Migrating from C# and Azure to Python and AWS
+- 🤖 **The AI Core**: How LLMs and vector embeddings power semantic search
+- 📊 **Real Results**: Actual ROI numbers and cost analysis
+- 💡 **Lessons Learned**: What we discovered building AI-first software
 
-1. **The Problem**: Why traditional CV screening fails at scale
-2. **The Migration**: Moving from Azure to AWS with Python
-3. **The AI**: How LLMs and embeddings power semantic search
-4. **The Business Case**: Real ROI numbers and cost analysis
-5. **Lessons Learned**: What we discovered building AI-first software
+## The Technology
 
-## Topics We Cover
+### Original Stack (Azure + C#)
+- Azure Document Intelligence for CV extraction
+- Azure Cognitive Search for indexing
+- C# .NET 8.0 backend
+- React frontend
 
-- **Artificial Intelligence**: LLMs, embeddings, semantic search, and practical AI applications
-- **Cloud Architecture**: AWS, Azure, infrastructure design, and cloud migrations
-- **Software Development**: Python, FastAPI, modern development practices
-- **Business & Technology**: ROI analysis, technology decisions, lessons learned
+### Current Stack (AWS + Python)
+- LLM-based extraction (OpenAI GPT-4)
+- Vector embeddings for semantic search
+- Python FastAPI backend
+- AWS S3 for storage
+- React frontend (unchanged)
+
+## Why Semantic Search?
+
+Traditional keyword search fails because:
+- "Python developer" doesn't match "software engineer skilled in Python"
+- "Cloud experience" doesn't find candidates with "AWS certified"
+- Different languages describe the same skills differently
+
+Candidex uses **vector embeddings** to understand meaning, not just match words. The result? Better candidates, faster.
 
 ## Connect
 
@@ -33,4 +48,4 @@ A 5-part deep dive into building an AI-powered CV matching system:
 
 ---
 
-*Built with Hugo and hosted on AWS*
+*Built with Hugo • Hosted on AWS CloudFront*

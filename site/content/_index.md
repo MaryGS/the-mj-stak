@@ -1,3 +1,3 @@
 ---
-title: "The MJ Stack"
+title: "Candidex"
 ---

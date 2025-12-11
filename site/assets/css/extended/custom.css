@@ -1,0 +1,578 @@
+/* ============================================
+   CANDIDEX - Modern Aesthetic Theme
+   ============================================ */
+
+/* Import modern fonts */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ============================================
+   CSS Variables - Dark Theme
+   ============================================ */
+:root {
+  /* Primary brand colors - Teal/Cyan accent */
+  --primary: #0ff0fc;
+  --primary-rgb: 15, 240, 252;
+  --primary-dark: #0cc8d4;
+  --secondary: #ff6b9d;
+  --secondary-rgb: 255, 107, 157;
+  
+  /* Background colors */
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --bg-tertiary: #1a1a25;
+  --bg-card: rgba(26, 26, 37, 0.7);
+  
+  /* Text colors */
+  --text-primary: #f0f0f5;
+  --text-secondary: #a0a0b0;
+  --text-muted: #6a6a7a;
+  
+  /* Border and effects */
+  --border-color: rgba(255, 255, 255, 0.08);
+  --glow: 0 0 20px rgba(15, 240, 252, 0.3);
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  
+  /* Typography */
+  --font-main: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* Override PaperMod dark theme variables */
+.dark {
+  --theme: #0a0a0f;
+  --entry: rgba(26, 26, 37, 0.7);
+  --primary: #f0f0f5;
+  --secondary: #a0a0b0;
+  --tertiary: #1a1a25;
+  --content: #d0d0d8;
+  --hljs-bg: #12121a;
+  --code-bg: #12121a;
+  --border: rgba(255, 255, 255, 0.08);
+}
+
+/* Force dark mode */
+body {
+  --theme: #0a0a0f;
+  --entry: rgba(26, 26, 37, 0.7);
+  --primary: #f0f0f5;
+  --secondary: #a0a0b0;
+  --tertiary: #1a1a25;
+  --content: #d0d0d8;
+  --hljs-bg: #12121a;
+  --code-bg: #12121a;
+  --border: rgba(255, 255, 255, 0.08);
+}
+
+/* ============================================
+   Animated Gradient Background
+   ============================================ */
+body {
+  font-family: var(--font-main) !important;
+  background: var(--bg-primary);
+  min-height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background: 
+    radial-gradient(ellipse at 20% 20%, rgba(15, 240, 252, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(255, 107, 157, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(99, 102, 241, 0.04) 0%, transparent 60%),
+    linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+/* Animated floating orbs */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: 
+    radial-gradient(circle at 15% 25%, rgba(15, 240, 252, 0.03) 0%, transparent 25%),
+    radial-gradient(circle at 85% 75%, rgba(255, 107, 157, 0.03) 0%, transparent 25%);
+  animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(2%, 1%);
+  }
+  50% {
+    transform: translate(0, 2%);
+  }
+  75% {
+    transform: translate(-2%, 1%);
+  }
+}
+
+/* Grid pattern overlay */
+.main {
+  position: relative;
+}
+
+/* ============================================
+   Typography
+   ============================================ */
+body, .post-content, p, li {
+  font-family: var(--font-main) !important;
+  letter-spacing: 0.01em;
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4, h5, h6,
+.post-title, .profile-title {
+  font-family: var(--font-main) !important;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+code, pre, .highlight {
+  font-family: var(--font-mono) !important;
+}
+
+/* ============================================
+   Header & Navigation
+   ============================================ */
+.nav {
+  background: rgba(10, 10, 15, 0.8) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+#menu a {
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+#menu a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  transition: width 0.3s ease;
+}
+
+#menu a:hover::after,
+#menu a.active::after {
+  width: 100%;
+}
+
+#menu a:hover {
+  color: var(--primary) !important;
+}
+
+.logo a {
+  font-weight: 700 !important;
+  font-size: 1.4rem !important;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   Profile / Home Page
+   ============================================ */
+.profile {
+  padding: 4rem 0;
+}
+
+.profile-title {
+  font-size: 3rem !important;
+  font-weight: 700 !important;
+  background: linear-gradient(135deg, #fff 0%, var(--primary) 50%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+}
+
+.profile-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+/* Buttons */
+.button,
+.profile .buttons a {
+  background: linear-gradient(135deg, rgba(15, 240, 252, 0.1), rgba(255, 107, 157, 0.1)) !important;
+  border: 1px solid rgba(15, 240, 252, 0.3) !important;
+  color: var(--primary) !important;
+  padding: 0.8rem 1.8rem !important;
+  border-radius: 50px !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+  backdrop-filter: blur(10px);
+}
+
+.button:hover,
+.profile .buttons a:hover {
+  background: linear-gradient(135deg, rgba(15, 240, 252, 0.2), rgba(255, 107, 157, 0.2)) !important;
+  border-color: var(--primary) !important;
+  box-shadow: var(--glow);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   Post Cards / Entries
+   ============================================ */
+.post-entry {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 16px !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  overflow: hidden;
+  position: relative;
+}
+
+.post-entry::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.post-entry:hover {
+  transform: translateY(-4px);
+  border-color: rgba(15, 240, 252, 0.3) !important;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(15, 240, 252, 0.1);
+}
+
+.post-entry:hover::before {
+  opacity: 1;
+}
+
+.entry-header h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.post-entry:hover .entry-header h2 {
+  color: var(--primary);
+}
+
+.entry-content {
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   Single Post
+   ============================================ */
+.post-header {
+  margin-bottom: 3rem;
+}
+
+.post-title {
+  font-size: 2.5rem !important;
+  font-weight: 700 !important;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.post-meta {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.post-content {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.post-content h2 {
+  font-size: 1.8rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--border-color);
+  background: linear-gradient(90deg, var(--text-primary), var(--primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.post-content h3 {
+  font-size: 1.4rem;
+  margin-top: 2rem;
+  color: var(--primary);
+}
+
+.post-content a {
+  color: var(--primary);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(15, 240, 252, 0.3);
+  transition: all 0.3s ease;
+}
+
+.post-content a:hover {
+  border-bottom-color: var(--primary);
+  text-shadow: 0 0 10px rgba(15, 240, 252, 0.5);
+}
+
+/* ============================================
+   Code Blocks
+   ============================================ */
+.highlight,
+pre {
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color);
+  border-radius: 12px !important;
+  overflow: hidden;
+}
+
+.highlight pre {
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+code {
+  font-family: var(--font-mono) !important;
+  font-size: 0.9em;
+}
+
+:not(pre) > code {
+  background: rgba(15, 240, 252, 0.1) !important;
+  color: var(--primary) !important;
+  padding: 0.2em 0.5em;
+  border-radius: 6px;
+  font-size: 0.85em;
+}
+
+/* Copy button */
+.copy-code {
+  background: rgba(15, 240, 252, 0.1) !important;
+  border: 1px solid rgba(15, 240, 252, 0.3) !important;
+  color: var(--primary) !important;
+  border-radius: 6px !important;
+}
+
+.copy-code:hover {
+  background: rgba(15, 240, 252, 0.2) !important;
+}
+
+/* ============================================
+   Tables
+   ============================================ */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  background: var(--bg-card);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+th {
+  background: rgba(15, 240, 252, 0.1);
+  color: var(--primary);
+  font-weight: 600;
+  text-align: left;
+  padding: 1rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover {
+  background: rgba(15, 240, 252, 0.03);
+}
+
+/* ============================================
+   Blockquotes
+   ============================================ */
+blockquote {
+  border-left: 3px solid var(--primary);
+  background: linear-gradient(90deg, rgba(15, 240, 252, 0.05), transparent);
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 12px 12px 0;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   Table of Contents
+   ============================================ */
+.toc {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
+  backdrop-filter: blur(20px);
+}
+
+.toc summary {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.toc ul a {
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+.toc ul a:hover {
+  color: var(--primary);
+  padding-left: 0.5rem;
+}
+
+/* ============================================
+   Tags
+   ============================================ */
+.post-tags a {
+  background: rgba(15, 240, 252, 0.1) !important;
+  border: 1px solid rgba(15, 240, 252, 0.2);
+  color: var(--primary) !important;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.post-tags a:hover {
+  background: rgba(15, 240, 252, 0.2) !important;
+  border-color: var(--primary);
+  box-shadow: 0 0 15px rgba(15, 240, 252, 0.2);
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+footer {
+  border-top: 1px solid var(--border-color);
+  background: rgba(10, 10, 15, 0.5);
+  backdrop-filter: blur(20px);
+}
+
+/* ============================================
+   Scrollbar
+   ============================================ */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary), var(--secondary));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* ============================================
+   Selection
+   ============================================ */
+::selection {
+  background: rgba(15, 240, 252, 0.3);
+  color: #fff;
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.post-entry {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.post-entry:nth-child(1) { animation-delay: 0.1s; }
+.post-entry:nth-child(2) { animation-delay: 0.2s; }
+.post-entry:nth-child(3) { animation-delay: 0.3s; }
+.post-entry:nth-child(4) { animation-delay: 0.4s; }
+.post-entry:nth-child(5) { animation-delay: 0.5s; }
+
+/* ============================================
+   Search Page
+   ============================================ */
+#searchbox {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 50px !important;
+  padding: 1rem 1.5rem !important;
+  color: var(--text-primary) !important;
+  transition: all 0.3s ease;
+}
+
+#searchbox:focus {
+  border-color: var(--primary) !important;
+  box-shadow: var(--glow);
+  outline: none;
+}
+
+/* ============================================
+   Mobile Responsiveness
+   ============================================ */
+@media (max-width: 768px) {
+  .profile-title {
+    font-size: 2rem !important;
+  }
+  
+  .post-title {
+    font-size: 1.8rem !important;
+  }
+  
+  .post-content h2 {
+    font-size: 1.4rem;
+  }
+}
+
+/* ============================================
+   ASCII Art Diagrams Styling
+   ============================================ */
+.post-content pre:has(code:not([class*="language-"])) {
+  background: var(--bg-tertiary) !important;
+  border: 1px solid rgba(15, 240, 252, 0.2);
+}
+

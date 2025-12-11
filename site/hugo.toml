@@ -1,6 +1,6 @@
 baseURL = "https://d1z05o8hs7l0vj.cloudfront.net/"
 languageCode = "en-us"
-title = "Tech Blog"
+title = "Candidex"
 theme = "PaperMod"
 
 # Enable useful features
@@ -19,12 +19,12 @@ minify.disableXML = true
 
 [params]
   # Site description for SEO
-  description = "Insights on AI, cloud architecture, and modern software development"
-  author = "Tech Blog Team"
+  description = "AI-Powered Candidate Matching | Insights on AI, cloud architecture, and modern recruitment technology"
+  author = "Candidex Team"
   
   # PaperMod specific
   env = "production"
-  defaultTheme = "auto"
+  defaultTheme = "dark"
   ShowReadingTime = true
   ShowShareButtons = true
   ShowPostNavLinks = true
@@ -35,6 +35,7 @@ minify.disableXML = true
   UseHugoToc = true
   disableSpecial1stPost = false
   disableScrollToTop = false
+  disableThemeToggle = true
   comments = false
   hidemeta = false
   hideSummary = false
@@ -44,18 +45,18 @@ minify.disableXML = true
   # Home page profile
   [params.profileMode]
     enabled = true
-    title = "Tech Blog"
-    subtitle = "AI, Cloud Architecture & Modern Development"
+    title = "Candidex"
+    subtitle = "AI-Powered Candidate Matching • Built with LLMs & Vector Search"
     imageUrl = ""
     imageWidth = 120
     imageHeight = 120
     
     [[params.profileMode.buttons]]
-      name = "All Posts"
+      name = "📖 Read the Blog"
       url = "posts"
     
     [[params.profileMode.buttons]]
-      name = "About"
+      name = "🚀 About the Project"
       url = "about"
   
   # Social icons
@@ -65,8 +66,8 @@ minify.disableXML = true
   
   # Home info mode (alternative to profile mode)
   [params.homeInfoParams]
-    Title = "Tech Blog"
-    Content = "Insights on AI, cloud migrations, LLMs, and building modern software systems."
+    Title = "Candidex"
+    Content = "Building the future of recruitment with AI, semantic search, and modern cloud architecture."
   
   # Search
   [params.fuseOpts]
@@ -87,7 +88,7 @@ minify.disableXML = true
 [menu]
   [[menu.main]]
     identifier = "posts"
-    name = "Posts"
+    name = "Blog"
     url = "/posts/"
     weight = 10
   
@@ -119,8 +120,7 @@ minify.disableXML = true
     codeFences = true
     guessSyntax = true
     lineNos = false
-    style = "monokai"
+    style = "dracula"
   
   [markup.goldmark.renderer]
     unsafe = true
-
