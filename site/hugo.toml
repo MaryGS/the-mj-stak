@@ -11,7 +11,8 @@ buildExpired = false
 enableEmoji = true
 
 # Pagination
-paginate = 10
+[pagination]
+  pagerSize = 10
 
 # Minification for production
 minify.disableXML = true
