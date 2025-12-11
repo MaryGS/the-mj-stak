@@ -1,6 +1,6 @@
 ---
 title: "Why HR Departments Are Drowning in CVs (And How AI Can Help)"
-date: 2024-01-15
+date: 2024-06-15
 draft: false
 description: "Exploring the challenges HR departments face with CV screening and introducing AI-powered solutions"
 tags: ["AI", "recruitment", "HR tech", "automation"]

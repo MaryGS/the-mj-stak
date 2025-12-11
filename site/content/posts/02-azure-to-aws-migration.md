@@ -1,6 +1,6 @@
 ---
 title: "From Azure to AWS: A Practical Cloud Migration Story"
-date: 2024-01-22
+date: 2025-08-22
 draft: false
 description: "A detailed technical walkthrough of migrating from Azure services to AWS with Python and LLMs"
 tags: ["AWS", "Azure", "cloud migration", "Python", "architecture"]

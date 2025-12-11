@@ -1,6 +1,6 @@
 ---
 title: "What We Learned Migrating to AI-First HR Tech"
-date: 2024-02-12
+date: 2025-09-28
 draft: false
 description: "Key lessons, surprises, and advice from building an AI-powered CV matching system"
 tags: ["lessons learned", "AI", "software development", "best practices", "retrospective"]
