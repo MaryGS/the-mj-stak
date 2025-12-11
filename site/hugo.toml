@@ -46,17 +46,17 @@ minify.disableXML = true
   [params.profileMode]
     enabled = true
     title = "Candidex"
-    subtitle = "AI-Powered Candidate Matching • Built with LLMs & Vector Search"
+    subtitle = "Finding the right candidate shouldn't require reading 300 CVs. We built a smarter way."
     imageUrl = ""
     imageWidth = 120
     imageHeight = 120
     
     [[params.profileMode.buttons]]
-      name = "📖 Read the Blog"
+      name = "Read the Blog"
       url = "posts"
     
     [[params.profileMode.buttons]]
-      name = "🚀 About the Project"
+      name = "About the Project"
       url = "about"
   
   # Social icons
@@ -67,7 +67,7 @@ minify.disableXML = true
   # Home info mode (alternative to profile mode)
   [params.homeInfoParams]
     Title = "Candidex"
-    Content = "Building the future of recruitment with AI, semantic search, and modern cloud architecture."
+    Content = "We're building AI that understands what makes a great candidate—not just what keywords they used."
   
   # Search
   [params.fuseOpts]
