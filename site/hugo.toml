@@ -62,7 +62,7 @@ minify.disableXML = true
   # Social icons
   [[params.socialIcons]]
     name = "github"
-    url = "https://github.com/your-org"
+    url = "https://github.com/MaryGS/hr-helper"
   
   # Home info mode (alternative to profile mode)
   [params.homeInfoParams]
