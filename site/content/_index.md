@@ -1,3 +1,3 @@
 ---
-title: "Tech Blog"
+title: "The MJ Stack"
 ---
