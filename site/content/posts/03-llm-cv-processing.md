@@ -8,7 +8,7 @@ series: ["Candidex"]
 weight: 3
 ShowToc: true
 TocOpen: false
-
+---
 
 ## The Intelligence Gap
 

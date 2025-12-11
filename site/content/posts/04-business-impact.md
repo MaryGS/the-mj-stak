@@ -8,7 +8,7 @@ series: ["Candidex"]
 weight: 4
 ShowToc: true
 TocOpen: false
-
+---
 
 ## Beyond the Technology Hype
 
