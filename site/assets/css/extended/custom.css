@@ -1,78 +1,76 @@
 /* ============================================
-   CANDIDEX - Modern Aesthetic Theme
+   CANDIDEX - Soft Watercolor Theme
    ============================================ */
 
-/* Import modern fonts */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+/* Import elegant fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Nunito+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 /* ============================================
-   CSS Variables - Dark Theme
+   CSS Variables - Light Watercolor Theme
    ============================================ */
 :root {
-  /* Primary brand colors - Teal/Cyan accent */
-  --primary: #0ff0fc;
-  --primary-rgb: 15, 240, 252;
-  --primary-dark: #0cc8d4;
-  --secondary: #ff6b9d;
-  --secondary-rgb: 255, 107, 157;
+  /* Primary brand colors - Rose gold / Blush */
+  --primary: #b8867b;
+  --primary-dark: #a07268;
+  --primary-light: #d4a59a;
+  --secondary: #c9a88e;
+  --accent: #8b7355;
   
   /* Background colors */
-  --bg-primary: #0a0a0f;
-  --bg-secondary: #12121a;
-  --bg-tertiary: #1a1a25;
-  --bg-card: rgba(26, 26, 37, 0.7);
+  --bg-primary: #faf8f5;
+  --bg-secondary: #f5f0eb;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --bg-overlay: rgba(250, 248, 245, 0.9);
   
   /* Text colors */
-  --text-primary: #f0f0f5;
-  --text-secondary: #a0a0b0;
-  --text-muted: #6a6a7a;
+  --text-primary: #4a3f3a;
+  --text-secondary: #6b5d55;
+  --text-muted: #9a8b82;
+  --text-heading: #3d322e;
   
   /* Border and effects */
-  --border-color: rgba(255, 255, 255, 0.08);
-  --glow: 0 0 20px rgba(15, 240, 252, 0.3);
-  --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --border-color: rgba(184, 134, 123, 0.2);
+  --border-light: rgba(184, 134, 123, 0.1);
+  --shadow-soft: 0 4px 20px rgba(74, 63, 58, 0.08);
+  --shadow-hover: 0 8px 30px rgba(74, 63, 58, 0.12);
   
   /* Typography */
-  --font-main: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Nunito Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
-/* Override PaperMod dark theme variables */
+/* Override PaperMod theme variables */
+body,
+.light,
 .dark {
-  --theme: #0a0a0f;
-  --entry: rgba(26, 26, 37, 0.7);
-  --primary: #f0f0f5;
-  --secondary: #a0a0b0;
-  --tertiary: #1a1a25;
-  --content: #d0d0d8;
-  --hljs-bg: #12121a;
-  --code-bg: #12121a;
-  --border: rgba(255, 255, 255, 0.08);
-}
-
-/* Force dark mode */
-body {
-  --theme: #0a0a0f;
-  --entry: rgba(26, 26, 37, 0.7);
-  --primary: #f0f0f5;
-  --secondary: #a0a0b0;
-  --tertiary: #1a1a25;
-  --content: #d0d0d8;
-  --hljs-bg: #12121a;
-  --code-bg: #12121a;
-  --border: rgba(255, 255, 255, 0.08);
+  --theme: #faf8f5;
+  --entry: rgba(255, 255, 255, 0.85);
+  --primary: #4a3f3a;
+  --secondary: #6b5d55;
+  --tertiary: #f5f0eb;
+  --content: #5a4f48;
+  --hljs-bg: #f5f0eb;
+  --code-bg: #f5f0eb;
+  --border: rgba(184, 134, 123, 0.2);
 }
 
 /* ============================================
-   Animated Gradient Background
+   Watercolor Background
    ============================================ */
 body {
-  font-family: var(--font-main) !important;
-  background: var(--bg-primary);
+  font-family: var(--font-body) !important;
+  background-color: var(--bg-primary);
+  background-image: url('/images/watercolor-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   min-height: 100vh;
-  position: relative;
+  color: var(--text-primary);
 }
 
+/* Fallback gradient if image doesn't load */
 body::before {
   content: '';
   position: fixed;
@@ -80,63 +78,33 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -2;
-  background: 
-    radial-gradient(ellipse at 20% 20%, rgba(15, 240, 252, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 80%, rgba(255, 107, 157, 0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 50%, rgba(99, 102, 241, 0.04) 0%, transparent 60%),
-    linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-}
-
-/* Animated floating orbs */
-body::after {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   z-index: -1;
-  background-image: 
-    radial-gradient(circle at 15% 25%, rgba(15, 240, 252, 0.03) 0%, transparent 25%),
-    radial-gradient(circle at 85% 75%, rgba(255, 107, 157, 0.03) 0%, transparent 25%);
-  animation: float 20s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translate(0, 0);
-  }
-  25% {
-    transform: translate(2%, 1%);
-  }
-  50% {
-    transform: translate(0, 2%);
-  }
-  75% {
-    transform: translate(-2%, 1%);
-  }
-}
-
-/* Grid pattern overlay */
-.main {
-  position: relative;
+  background: 
+    linear-gradient(135deg, 
+      rgba(245, 213, 208, 0.4) 0%, 
+      rgba(250, 248, 245, 0.6) 30%,
+      rgba(212, 196, 181, 0.3) 60%,
+      rgba(250, 248, 245, 0.5) 100%
+    );
+  pointer-events: none;
 }
 
 /* ============================================
    Typography
    ============================================ */
 body, .post-content, p, li {
-  font-family: var(--font-main) !important;
+  font-family: var(--font-body) !important;
   letter-spacing: 0.01em;
-  line-height: 1.7;
+  line-height: 1.8;
+  color: var(--text-primary);
 }
 
 h1, h2, h3, h4, h5, h6,
 .post-title, .profile-title {
-  font-family: var(--font-main) !important;
+  font-family: var(--font-heading) !important;
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.02em;
+  color: var(--text-heading);
 }
 
 code, pre, .highlight {
@@ -144,17 +112,40 @@ code, pre, .highlight {
 }
 
 /* ============================================
+   Main Content Container
+   ============================================ */
+.main {
+  background: var(--bg-overlay);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 0;
+}
+
+@media (min-width: 768px) {
+  .main {
+    margin: 2rem auto;
+    max-width: 900px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-soft);
+  }
+}
+
+/* ============================================
    Header & Navigation
    ============================================ */
 .nav {
-  background: rgba(10, 10, 15, 0.8) !important;
+  background: rgba(255, 255, 255, 0.9) !important;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-light);
 }
 
 #menu a {
+  font-family: var(--font-body);
   font-weight: 500;
+  color: var(--text-secondary) !important;
   transition: all 0.3s ease;
   position: relative;
 }
@@ -163,11 +154,12 @@ code, pre, .highlight {
   content: '';
   position: absolute;
   bottom: -2px;
-  left: 0;
+  left: 50%;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
-  transition: width 0.3s ease;
+  background: var(--primary);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
 }
 
 #menu a:hover::after,
@@ -180,12 +172,16 @@ code, pre, .highlight {
 }
 
 .logo a {
+  font-family: var(--font-heading) !important;
   font-weight: 700 !important;
-  font-size: 1.4rem !important;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: 1.6rem !important;
+  color: var(--primary) !important;
+  letter-spacing: 0.05em;
+}
+
+/* Hide theme toggle */
+#theme-toggle {
+  display: none !important;
 }
 
 /* ============================================
@@ -193,43 +189,47 @@ code, pre, .highlight {
    ============================================ */
 .profile {
   padding: 4rem 0;
+  text-align: center;
 }
 
 .profile-title {
-  font-size: 3rem !important;
-  font-weight: 700 !important;
-  background: linear-gradient(135deg, #fff 0%, var(--primary) 50%, var(--secondary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 1rem;
+  font-family: var(--font-heading) !important;
+  font-size: 3.5rem !important;
+  font-weight: 600 !important;
+  color: var(--text-heading) !important;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.03em;
 }
 
 .profile-subtitle {
-  font-size: 1.2rem;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
   color: var(--text-secondary);
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  font-weight: 400;
 }
 
 /* Buttons */
 .button,
 .profile .buttons a {
-  background: linear-gradient(135deg, rgba(15, 240, 252, 0.1), rgba(255, 107, 157, 0.1)) !important;
-  border: 1px solid rgba(15, 240, 252, 0.3) !important;
+  background: white !important;
+  border: 2px solid var(--primary) !important;
   color: var(--primary) !important;
-  padding: 0.8rem 1.8rem !important;
+  padding: 0.9rem 2rem !important;
   border-radius: 50px !important;
-  font-weight: 500 !important;
+  font-family: var(--font-body) !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
   transition: all 0.3s ease !important;
-  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-soft);
 }
 
 .button:hover,
 .profile .buttons a:hover {
-  background: linear-gradient(135deg, rgba(15, 240, 252, 0.2), rgba(255, 107, 157, 0.2)) !important;
-  border-color: var(--primary) !important;
-  box-shadow: var(--glow);
+  background: var(--primary) !important;
+  color: white !important;
   transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
 }
 
 /* ============================================
@@ -237,42 +237,27 @@ code, pre, .highlight {
    ============================================ */
 .post-entry {
   background: var(--bg-card) !important;
-  border: 1px solid var(--border-color) !important;
+  border: 1px solid var(--border-light) !important;
   border-radius: 16px !important;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
   overflow: hidden;
-  position: relative;
-}
-
-.post-entry::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 1.5rem;
 }
 
 .post-entry:hover {
   transform: translateY(-4px);
-  border-color: rgba(15, 240, 252, 0.3) !important;
-  box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.3),
-    0 0 30px rgba(15, 240, 252, 0.1);
-}
-
-.post-entry:hover::before {
-  opacity: 1;
+  box-shadow: var(--shadow-hover);
+  border-color: var(--primary-light) !important;
 }
 
 .entry-header h2 {
-  font-size: 1.3rem;
+  font-family: var(--font-heading) !important;
+  font-size: 1.5rem;
   font-weight: 600;
+  color: var(--text-heading);
   transition: color 0.3s ease;
 }
 
@@ -282,6 +267,7 @@ code, pre, .highlight {
 
 .entry-content {
   color: var(--text-secondary);
+  font-size: 0.95rem;
 }
 
 /* ============================================
@@ -289,13 +275,18 @@ code, pre, .highlight {
    ============================================ */
 .post-header {
   margin-bottom: 3rem;
+  text-align: center;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .post-title {
-  font-size: 2.5rem !important;
-  font-weight: 700 !important;
+  font-family: var(--font-heading) !important;
+  font-size: 2.8rem !important;
+  font-weight: 600 !important;
   line-height: 1.2;
   margin-bottom: 1rem;
+  color: var(--text-heading);
 }
 
 .post-meta {
@@ -304,38 +295,38 @@ code, pre, .highlight {
 }
 
 .post-content {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: var(--text-primary);
+  line-height: 1.9;
 }
 
 .post-content h2 {
-  font-size: 1.8rem;
+  font-family: var(--font-heading) !important;
+  font-size: 1.9rem;
   margin-top: 3rem;
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid var(--border-color);
-  background: linear-gradient(90deg, var(--text-primary), var(--primary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text-heading);
 }
 
 .post-content h3 {
-  font-size: 1.4rem;
+  font-family: var(--font-heading) !important;
+  font-size: 1.5rem;
   margin-top: 2rem;
-  color: var(--primary);
+  color: var(--primary-dark);
 }
 
 .post-content a {
   color: var(--primary);
   text-decoration: none;
-  border-bottom: 1px solid rgba(15, 240, 252, 0.3);
+  border-bottom: 1px solid var(--primary-light);
   transition: all 0.3s ease;
 }
 
 .post-content a:hover {
   border-bottom-color: var(--primary);
-  text-shadow: 0 0 10px rgba(15, 240, 252, 0.5);
+  color: var(--primary-dark);
 }
 
 /* ============================================
@@ -343,7 +334,7 @@ code, pre, .highlight {
    ============================================ */
 .highlight,
 pre {
-  background: var(--bg-secondary) !important;
+  background: #f8f5f2 !important;
   border: 1px solid var(--border-color);
   border-radius: 12px !important;
   overflow: hidden;
@@ -352,6 +343,7 @@ pre {
 .highlight pre {
   border: none !important;
   border-radius: 0 !important;
+  background: transparent !important;
 }
 
 code {
@@ -360,8 +352,8 @@ code {
 }
 
 :not(pre) > code {
-  background: rgba(15, 240, 252, 0.1) !important;
-  color: var(--primary) !important;
+  background: rgba(184, 134, 123, 0.15) !important;
+  color: var(--primary-dark) !important;
   padding: 0.2em 0.5em;
   border-radius: 6px;
   font-size: 0.85em;
@@ -369,14 +361,15 @@ code {
 
 /* Copy button */
 .copy-code {
-  background: rgba(15, 240, 252, 0.1) !important;
-  border: 1px solid rgba(15, 240, 252, 0.3) !important;
-  color: var(--primary) !important;
+  background: white !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-secondary) !important;
   border-radius: 6px !important;
 }
 
 .copy-code:hover {
-  background: rgba(15, 240, 252, 0.2) !important;
+  background: var(--bg-secondary) !important;
+  color: var(--primary) !important;
 }
 
 /* ============================================
@@ -386,15 +379,17 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin: 1.5rem 0;
-  background: var(--bg-card);
+  background: white;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-soft);
 }
 
 th {
-  background: rgba(15, 240, 252, 0.1);
-  color: var(--primary);
+  background: rgba(184, 134, 123, 0.1);
+  color: var(--text-heading);
+  font-family: var(--font-heading);
   font-weight: 600;
   text-align: left;
   padding: 1rem;
@@ -403,7 +398,8 @@ th {
 
 td {
   padding: 0.8rem 1rem;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-primary);
 }
 
 tr:last-child td {
@@ -411,15 +407,15 @@ tr:last-child td {
 }
 
 tr:hover {
-  background: rgba(15, 240, 252, 0.03);
+  background: rgba(184, 134, 123, 0.05);
 }
 
 /* ============================================
    Blockquotes
    ============================================ */
 blockquote {
-  border-left: 3px solid var(--primary);
-  background: linear-gradient(90deg, rgba(15, 240, 252, 0.05), transparent);
+  border-left: 4px solid var(--primary);
+  background: rgba(184, 134, 123, 0.08);
   padding: 1rem 1.5rem;
   margin: 1.5rem 0;
   border-radius: 0 12px 12px 0;
@@ -431,15 +427,16 @@ blockquote {
    Table of Contents
    ============================================ */
 .toc {
-  background: var(--bg-card) !important;
-  border: 1px solid var(--border-color) !important;
+  background: white !important;
+  border: 1px solid var(--border-light) !important;
   border-radius: 12px !important;
-  backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-soft);
 }
 
 .toc summary {
+  font-family: var(--font-heading);
   font-weight: 600;
-  color: var(--primary);
+  color: var(--text-heading);
 }
 
 .toc ul a {
@@ -456,45 +453,56 @@ blockquote {
    Tags
    ============================================ */
 .post-tags a {
-  background: rgba(15, 240, 252, 0.1) !important;
-  border: 1px solid rgba(15, 240, 252, 0.2);
+  background: white !important;
+  border: 1px solid var(--border-color);
   color: var(--primary) !important;
-  padding: 0.3rem 0.8rem;
+  padding: 0.4rem 1rem;
   border-radius: 20px;
   font-size: 0.85rem;
+  font-weight: 500;
   transition: all 0.3s ease;
+  box-shadow: var(--shadow-soft);
 }
 
 .post-tags a:hover {
-  background: rgba(15, 240, 252, 0.2) !important;
+  background: var(--primary) !important;
+  color: white !important;
   border-color: var(--primary);
-  box-shadow: 0 0 15px rgba(15, 240, 252, 0.2);
 }
 
 /* ============================================
    Footer
    ============================================ */
 footer {
-  border-top: 1px solid var(--border-color);
-  background: rgba(10, 10, 15, 0.5);
-  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border-light);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  color: var(--text-muted);
+}
+
+footer a {
+  color: var(--text-secondary);
+}
+
+footer a:hover {
+  color: var(--primary);
 }
 
 /* ============================================
    Scrollbar
    ============================================ */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+  background: var(--bg-secondary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--primary), var(--secondary));
-  border-radius: 4px;
+  background: var(--primary-light);
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -505,8 +513,8 @@ footer {
    Selection
    ============================================ */
 ::selection {
-  background: rgba(15, 240, 252, 0.3);
-  color: #fff;
+  background: rgba(184, 134, 123, 0.3);
+  color: var(--text-heading);
 }
 
 /* ============================================
@@ -525,30 +533,85 @@ footer {
 
 .post-entry {
   animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
 }
 
 .post-entry:nth-child(1) { animation-delay: 0.1s; }
-.post-entry:nth-child(2) { animation-delay: 0.2s; }
-.post-entry:nth-child(3) { animation-delay: 0.3s; }
-.post-entry:nth-child(4) { animation-delay: 0.4s; }
-.post-entry:nth-child(5) { animation-delay: 0.5s; }
+.post-entry:nth-child(2) { animation-delay: 0.15s; }
+.post-entry:nth-child(3) { animation-delay: 0.2s; }
+.post-entry:nth-child(4) { animation-delay: 0.25s; }
+.post-entry:nth-child(5) { animation-delay: 0.3s; }
 
 /* ============================================
    Search Page
    ============================================ */
 #searchbox {
-  background: var(--bg-card) !important;
-  border: 1px solid var(--border-color) !important;
+  background: white !important;
+  border: 2px solid var(--border-color) !important;
   border-radius: 50px !important;
   padding: 1rem 1.5rem !important;
   color: var(--text-primary) !important;
+  font-family: var(--font-body) !important;
   transition: all 0.3s ease;
+  box-shadow: var(--shadow-soft);
 }
 
 #searchbox:focus {
   border-color: var(--primary) !important;
-  box-shadow: var(--glow);
+  box-shadow: 0 0 0 3px rgba(184, 134, 123, 0.1);
   outline: none;
+}
+
+#searchbox::placeholder {
+  color: var(--text-muted);
+}
+
+/* ============================================
+   Social Icons
+   ============================================ */
+.social-icons a {
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   Breadcrumbs
+   ============================================ */
+.breadcrumbs {
+  color: var(--text-muted);
+}
+
+.breadcrumbs a {
+  color: var(--text-secondary);
+}
+
+.breadcrumbs a:hover {
+  color: var(--primary);
+}
+
+/* ============================================
+   Post Navigation
+   ============================================ */
+.paginav {
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.paginav a {
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+.paginav a:hover {
+  background: rgba(184, 134, 123, 0.1);
+  color: var(--primary);
 }
 
 /* ============================================
@@ -556,23 +619,60 @@ footer {
    ============================================ */
 @media (max-width: 768px) {
   .profile-title {
-    font-size: 2rem !important;
+    font-size: 2.5rem !important;
   }
   
   .post-title {
-    font-size: 1.8rem !important;
+    font-size: 2rem !important;
   }
   
   .post-content h2 {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
+  }
+  
+  .main {
+    padding: 1rem;
+    margin: 0;
+    border-radius: 0;
   }
 }
 
 /* ============================================
-   ASCII Art Diagrams Styling
+   Lists
    ============================================ */
-.post-content pre:has(code:not([class*="language-"])) {
-  background: var(--bg-tertiary) !important;
-  border: 1px solid rgba(15, 240, 252, 0.2);
+.post-content ul,
+.post-content ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
 }
 
+.post-content li {
+  margin: 0.5rem 0;
+  color: var(--text-primary);
+}
+
+.post-content li::marker {
+  color: var(--primary);
+}
+
+/* ============================================
+   Strong and Emphasis
+   ============================================ */
+.post-content strong {
+  color: var(--text-heading);
+  font-weight: 600;
+}
+
+.post-content em {
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   Horizontal Rule
+   ============================================ */
+hr {
+  border: none;
+  height: 1px;
+  background: var(--border-color);
+  margin: 2rem 0;
+}

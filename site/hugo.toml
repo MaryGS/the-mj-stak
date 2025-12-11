@@ -24,7 +24,7 @@ minify.disableXML = true
   
   # PaperMod specific
   env = "production"
-  defaultTheme = "dark"
+  defaultTheme = "light"
   ShowReadingTime = true
   ShowShareButtons = true
   ShowPostNavLinks = true
@@ -120,7 +120,7 @@ minify.disableXML = true
     codeFences = true
     guessSyntax = true
     lineNos = false
-    style = "dracula"
+    style = "github"
   
   [markup.goldmark.renderer]
     unsafe = true
