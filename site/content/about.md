@@ -10,7 +10,7 @@ A technical blog exploring AI, cloud architecture, and modern software developme
 
 ## Current Series
 
-### HR Helper Series
+### Candidex Series
 
 A 5-part deep dive into building an AI-powered CV matching system:
 

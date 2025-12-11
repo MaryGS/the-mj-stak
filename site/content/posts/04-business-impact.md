@@ -1,10 +1,10 @@
 ---
 title: "The ROI of AI-Powered Recruitment: Real Numbers, Real Results"
 date: 2025-09-10
-draft: false
+draft: true
 description: "Breaking down the real business impact of AI-powered CV screening with time savings, cost analysis, and ROI calculations"
 tags: ["ROI", "business", "HR tech", "cost analysis", "productivity"]
-series: ["HR Helper"]
+series: ["Candidex"]
 weight: 4
 ShowToc: true
 TocOpen: false

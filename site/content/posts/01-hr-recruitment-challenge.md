@@ -4,13 +4,13 @@ date: 2024-06-15
 draft: false
 description: "Exploring the challenges HR departments face with CV screening and introducing AI-powered solutions"
 tags: ["AI", "recruitment", "HR tech", "automation"]
-series: ["HR Helper"]
+series: ["Candidex"]
 weight: 1
 ShowToc: true
 TocOpen: false
 ---
 
-*Part 1 of 5 in the HR Helper Blog Series*
+*Part 1 of 5 in the Candidex Blog Series*
 
 ---
 
@@ -61,15 +61,15 @@ Instead of asking "Does this CV contain the word 'Python'?", these systems ask:
 - "What is their actual level of expertise based on the projects they've described?"
 - "How well does their career trajectory align with this role's requirements?"
 
-**This is HR Helper.**
+**This is Candidex.**
 
-## Introducing HR Helper: AI-Powered Candidate Matching
+## Introducing Candidex: AI-Powered Candidate Matching
 
-HR Helper is an application we built to transform how HR departments find candidates. Here's what makes it different:
+Candidex is an application we built to transform how HR departments find candidates. Here's what makes it different:
 
 ### Intelligent CV Processing
 
-When you upload a CV, HR Helper doesn't just store it—it *understands* it. Using LLM technology, the system extracts structured information:
+When you upload a CV, Candidex doesn't just store it—it *understands* it. Using LLM technology, the system extracts structured information:
 
 - Professional summary and career objectives
 - Technical and soft skills with context
@@ -82,11 +82,11 @@ This extraction happens in seconds and works across multiple languages, includin
 
 ### Semantic Search
 
-Instead of keyword matching, HR Helper uses vector embeddings—mathematical representations of meaning. When you search for "experienced backend developer comfortable with cloud infrastructure," the system finds candidates whose profiles *semantically* match that description, even if they've never used those exact words.
+Instead of keyword matching, Candidex uses vector embeddings—mathematical representations of meaning. When you search for "experienced backend developer comfortable with cloud infrastructure," the system finds candidates whose profiles *semantically* match that description, even if they've never used those exact words.
 
 ### Natural Language Queries
 
-Talk to HR Helper like you'd talk to a colleague:
+Talk to Candidex like you'd talk to a colleague:
 
 - "Find me candidates with 5+ years of experience in data engineering"
 - "Who has experience leading remote teams?"
@@ -96,19 +96,21 @@ The system understands intent, not just keywords.
 
 ### Multi-Language Support
 
-In our globalized workforce, talent speaks many languages. HR Helper processes CVs in multiple languages and can translate extracted information, ensuring language barriers don't create hiring blind spots.
+In our globalized workforce, talent speaks many languages. Candidex processes CVs in multiple languages and can translate extracted information, ensuring language barriers don't create hiring blind spots.
 
 ## What's Coming in This Series
 
-This is the first post in a five-part series exploring HR Helper and the technology behind it:
+This is the first post in a series exploring Candidex and the technology behind it:
 
-**Post 2: From Azure to AWS** — We'll dive into the technical journey of migrating our infrastructure from Microsoft Azure to Amazon Web Services, and why we made that choice.
+**Post 2: [Building with Azure and C#](/posts/02-azure-architecture/)** — A technical overview of our Azure-based architecture using Document Intelligence, Cognitive Search, and OpenAI.
 
-**Post 3: The AI Behind the Scenes** — A closer look at how LLMs extract meaning from unstructured CV text and how semantic search outperforms traditional methods.
+**Post 3: [Training Document Intelligence](/posts/03-document-intelligence/)** — How we trained a custom model to extract structured data from unstructured CVs.
 
-**Post 4: The Business Case** — Real numbers on time savings, cost analysis, and ROI for HR departments of different sizes.
+**Post 4: [Azure Cognitive Search](/posts/04-cognitive-search/)** — Building intelligent candidate discovery with search and AI-powered recommendations.
 
-**Post 5: Lessons Learned** — What we discovered along the way and where we're headed next.
+**Post 5: [Lessons Learned](/posts/05-lessons-learned-azure/)** — What worked, what didn't, and what we'd do differently building with Azure and C#.
+
+**Post 6: [From Azure to AWS](/posts/06-azure-to-aws-migration/)** — Migrating to a simpler, LLM-first architecture with Python and AWS.
 
 ## The Future of Recruitment
 
@@ -118,7 +120,7 @@ Today's challenges demand today's solutions.
 
 AI won't replace human recruiters. The judgment calls—cultural fit, growth potential, team dynamics—will always require human insight. But AI can ensure that when recruiters make those calls, they're choosing from a pool of genuinely qualified candidates, not whoever happened to use the right keywords.
 
-That's the vision behind HR Helper. That's why we built it.
+That's the vision behind Candidex. That's why we built it.
 
 ---
 
@@ -126,5 +128,5 @@ That's the vision behind HR Helper. That's why we built it.
 
 ---
 
-**About This Series**: This blog series documents the development of HR Helper, an open-source AI-powered CV matching system. We share our technical decisions, business learnings, and vision for the future of recruitment technology.
+**About This Series**: This blog series documents the development of Candidex, an open-source AI-powered CV matching system. We share our technical decisions, business learnings, and vision for the future of recruitment technology.
 

@@ -1,10 +1,10 @@
 ---
 title: "Beyond Keywords: Using LLMs to Actually Understand Resumes"
 date: 2025-09-05
-draft: false
+draft: true
 description: "Deep dive into how Large Language Models and semantic search transform CV processing"
 tags: ["LLM", "AI", "semantic search", "embeddings", "NLP"]
-series: ["HR Helper"]
+series: ["Candidex"]
 weight: 3
 ShowToc: true
 TocOpen: false

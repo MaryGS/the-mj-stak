@@ -58,7 +58,7 @@ The blog automatically deploys to AWS S3 + CloudFront when changes are pushed to
 
 ## Current Content
 
-### HR Helper Series
+### Candidex Series
 
 A 5-part series on building AI-powered recruitment technology:
 
