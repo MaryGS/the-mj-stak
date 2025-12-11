@@ -1,21 +1,10 @@
-name: Deploy Hugo Blog to AWS S3
+name: Deploy Hugo Site to AWS
 
 on:
   push:
     branches:
       - main
-    paths:
-      - 'site/**'
-      - '.github/workflows/deploy.yml'
   workflow_dispatch:  # Allow manual trigger
-
-# Sets permissions of the GITHUB_TOKEN to allow OIDC
-permissions:
-  id-token: write
-  contents: read
-
-env:
-  HUGO_VERSION: '0.139.0'
 
 jobs:
   build-and-deploy:
@@ -31,24 +20,21 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: ${{ env.HUGO_VERSION }}
+          hugo-version: 'latest'
           extended: true
 
       - name: Build Hugo site
         working-directory: ./site
-        run: |
-          hugo --minify --baseURL "${{ vars.SITE_URL || 'https://your-cloudfront-domain.cloudfront.net/' }}"
+        run: hugo --minify
 
-      - name: Configure AWS credentials (OIDC)
+      - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ vars.AWS_REGION || 'us-east-1' }}
-        # If using IAM credentials instead of OIDC, comment above and use:
-        # aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        # aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-      - name: Sync to S3
+      - name: Deploy to S3
         run: |
           aws s3 sync ./site/public/ s3://${{ secrets.AWS_S3_BUCKET }}/ \
             --delete \
@@ -57,9 +43,8 @@ jobs:
             --exclude "*.xml" \
             --exclude "*.json"
           
-          # HTML, XML, JSON files should not be cached as long
+          # Upload HTML/XML/JSON with shorter cache
           aws s3 sync ./site/public/ s3://${{ secrets.AWS_S3_BUCKET }}/ \
-            --delete \
             --cache-control "max-age=3600" \
             --include "*.html" \
             --include "*.xml" \
@@ -70,12 +55,3 @@ jobs:
           aws cloudfront create-invalidation \
             --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} \
             --paths "/*"
-
-      - name: Deployment summary
-        run: |
-          echo "## Deployment Complete! :rocket:" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- **S3 Bucket**: ${{ secrets.AWS_S3_BUCKET }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **CloudFront Distribution**: ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Hugo Version**: ${{ env.HUGO_VERSION }}" >> $GITHUB_STEP_SUMMARY
-
