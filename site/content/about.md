@@ -34,7 +34,7 @@ Candidex uses vector embeddings to bridge this gap. The result is better candida
 
 ## Connect
 
-Find us on [GitHub](https://github.com/your-org)
+Find us on [GitHub](https://github.com/MaryGS/hr-helper)
 
 ---
 
