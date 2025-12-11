@@ -8,7 +8,7 @@ series: ["Candidex"]
 weight: 6
 ShowToc: true
 TocOpen: false
-
+---
 
 ## Time for a Change
 

@@ -8,6 +8,7 @@ series: ["Candidex"]
 weight: 2
 ShowToc: true
 TocOpen: false
+---
 
 ## From Problem to Architecture
 

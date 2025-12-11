@@ -8,7 +8,7 @@ series: ["Candidex"]
 weight: 1
 ShowToc: true
 TocOpen: false
-
+---
 
 ## The Hidden Crisis in Recruitment
 

@@ -8,7 +8,7 @@ series: ["Candidex"]
 weight: 5
 ShowToc: true
 TocOpen: false
-
+---
 
 ## Looking Back
 
