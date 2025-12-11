@@ -8,11 +8,7 @@ series: ["Candidex"]
 weight: 4
 ShowToc: true
 TocOpen: false
----
 
-*Part 4 of the Candidex Blog Series*
-
----
 
 ## From Data to Discovery
 

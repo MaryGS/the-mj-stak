@@ -8,11 +8,7 @@ series: ["Candidex"]
 weight: 6
 ShowToc: true
 TocOpen: false
----
 
-*Part 6 of the Candidex Blog Series*
-
----
 
 ## Time for a Change
 

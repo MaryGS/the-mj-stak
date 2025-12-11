@@ -8,11 +8,7 @@ series: ["Candidex"]
 weight: 2
 ShowToc: true
 TocOpen: false
----
 
-*Part 2 of 5 in the HR Helper Blog Series*
-
----
 
 ## Why Migrate?
 

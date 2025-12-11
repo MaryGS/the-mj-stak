@@ -8,11 +8,7 @@ series: ["Candidex"]
 weight: 4
 ShowToc: true
 TocOpen: false
----
 
-*Part 4 of 5 in the HR Helper Blog Series*
-
----
 
 ## Beyond the Technology Hype
 

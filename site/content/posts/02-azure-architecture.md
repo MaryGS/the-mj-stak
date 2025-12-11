@@ -8,11 +8,6 @@ series: ["Candidex"]
 weight: 2
 ShowToc: true
 TocOpen: false
----
-
-*Part 2 of the Candidex Blog Series*
-
----
 
 ## From Problem to Architecture
 

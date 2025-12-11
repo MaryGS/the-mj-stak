@@ -8,11 +8,7 @@ series: ["Candidex"]
 weight: 1
 ShowToc: true
 TocOpen: false
----
 
-*Part 1 of 5 in the Candidex Blog Series*
-
----
 
 ## The Hidden Crisis in Recruitment
 

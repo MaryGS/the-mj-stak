@@ -8,11 +8,7 @@ series: ["Candidex"]
 weight: 5
 ShowToc: true
 TocOpen: false
----
 
-*Part 5 of 5 in the HR Helper Blog Series*
-
----
 
 ## Reflecting on the Journey
 

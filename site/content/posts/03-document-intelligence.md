@@ -8,11 +8,7 @@ series: ["Candidex"]
 weight: 3
 ShowToc: true
 TocOpen: false
----
 
-*Part 3 of the Candidex Blog Series*
-
----
 
 ## The Challenge of Unstructured Documents
 
