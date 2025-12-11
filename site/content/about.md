@@ -48,4 +48,4 @@ Candidex uses **vector embeddings** to understand meaning, not just match words.
 
 ---
 
-*Built with Hugo • Hosted on AWS CloudFront*
+*Built with Hugo • Hosted on AWS CloudFront • Powered by AI*
