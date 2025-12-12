@@ -1190,6 +1190,33 @@ article img {
 }
 
 /* ============================================
+   Force Transparent Backgrounds for Images
+   ============================================ */
+
+/* Index/Home page image */
+.profile img,
+.profile-mode img,
+.home img {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* About page image */
+.post-single .post-content > p:first-child img,
+.single .post-content > p:first-child img,
+.about img {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Remove background from parent containers */
+.profile,
+.profile-mode,
+.post-content > p:first-child {
+  background: transparent !important;
+}
+
+/* ============================================
    Print Styles
    ============================================ */
 @media print {
