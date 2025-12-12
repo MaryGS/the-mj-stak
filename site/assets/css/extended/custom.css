@@ -595,6 +595,46 @@ main.main > .posts-group,
 /* ============================================
    Single Post Page
    ============================================ */
+
+/* Remove grid layout for single post pages */
+.post-single .main,
+.single .main,
+body.single main,
+article.post-single {
+  display: block !important;
+  max-width: 900px !important;
+  margin: 0 auto !important;
+}
+
+/* Hide sidebar on single post pages */
+.post-single .blog-sidebar,
+.single .blog-sidebar,
+body.single .blog-sidebar {
+  display: none !important;
+}
+
+/* Remove layout wrapper grid on single posts */
+.post-single .layout-wrapper,
+.single .layout-wrapper,
+body.single .layout-wrapper {
+  display: block !important;
+  grid-template-columns: none !important;
+}
+
+/* Ensure post content takes full width */
+.post-single .post-content,
+.single .post-content {
+  max-width: 100% !important;
+  margin: 0 auto !important;
+}
+
+/* Keep post entries as block on single pages (not grid items) */
+.post-single .post-entry,
+.single .post-entry {
+  display: block !important;
+  max-width: 100% !important;
+}
+
 .post-header {
   text-align: center !important;
   margin-bottom: 2rem !important;
