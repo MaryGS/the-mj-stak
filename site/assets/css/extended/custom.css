@@ -194,13 +194,13 @@ main, .main {
 }
 
 .sidebar-profile img {
+  display: block;           /* This is essential */
+  margin: 0 auto 0.75rem auto;  /* This centers it */
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  margin-bottom: 0 auto 0.75rem auto;
   object-fit: cover;
   border: 3px solid var(--accent-secondary);
-  display: block;
 }
 
 .sidebar-profile h3 {
