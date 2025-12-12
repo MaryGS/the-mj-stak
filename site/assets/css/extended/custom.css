@@ -1,13 +1,14 @@
 /* ============================================
    CANDIDEX - Illustrated Design Theme
-   Modern, Friendly, Card-Based Layout
+   Warm, Friendly, Card-Based Layout
+   Inspired by 3D Illustration Style
    ============================================ */
 
 /* Import fonts */
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
 /* ============================================
-   CSS Variables - New Color Palette
+   CSS Variables - Warm Palette from Illustrations
    ============================================ */
 :root,
 :root[data-theme="light"],
@@ -16,17 +17,19 @@
 [data-theme="dark"],
 .dark,
 .light {
-  /* New Color Palette */
-  --primary-bg: #FFF8F3;
-  --accent-primary: #FF9B7A;
-  --accent-secondary: #FFD4B8;
-  --accent-hover: #ff8a64;
-  --text-primary: #1A1A1A;
-  --text-secondary: #4A4A4A;
-  --text-muted: #7A7A7A;
+  /* Colors extracted from illustrations */
+  --primary-bg: #F5F1EB;           /* Warm cream from illustrations */
+  --accent-primary: #D4A574;        /* Warm tan/caramel */
+  --accent-secondary: #E8C4A0;      /* Light tan */
+  --accent-mustard: #C9A857;        /* Mustard yellow from character shirts */
+  --accent-slate: #5C6B7A;          /* Slate blue-gray from pants/chairs */
+  --accent-sage: #8BA888;           /* Sage green from plants */
+  --accent-terracotta: #B86F4C;     /* Terracotta from pots */
+  --text-primary: #2D3436;          /* Dark charcoal */
+  --text-secondary: #636E72;        /* Medium gray */
+  --text-muted: #95A5A6;            /* Light gray */
   --card-bg: #FFFFFF;
-  --plant-green: #8BC9A3;
-  --border-light: rgba(255, 155, 122, 0.15);
+  --border-light: rgba(212, 165, 116, 0.2);
   
   /* PaperMod Overrides */
   --gap: 24px;
@@ -36,16 +39,16 @@
   --header-height: 64px;
   --footer-height: 60px;
   --radius: 16px;
-  --theme: #FFF8F3;
+  --theme: #F5F1EB;
   --entry: #FFFFFF;
-  --primary: #1A1A1A;
-  --secondary: #4A4A4A;
-  --tertiary: #FFF0E8;
-  --content: #1A1A1A;
-  --code-block-bg: #FFF5EE;
-  --code-bg: #FFF0E8;
-  --hljs-bg: #FFF5EE;
-  --border: rgba(255, 155, 122, 0.15);
+  --primary: #2D3436;
+  --secondary: #636E72;
+  --tertiary: #F0EBE3;
+  --content: #2D3436;
+  --code-block-bg: #FAF8F5;
+  --code-bg: #F0EBE3;
+  --hljs-bg: #FAF8F5;
+  --border: rgba(212, 165, 116, 0.2);
   
   color-scheme: light !important;
 }
@@ -66,7 +69,7 @@ body {
   line-height: 1.6;
 }
 
-/* Subtle gradient background */
+/* Subtle warm gradient background */
 body::before {
   content: '';
   position: fixed;
@@ -76,8 +79,9 @@ body::before {
   height: 100%;
   z-index: -1;
   background: 
-    radial-gradient(ellipse at 0% 0%, rgba(255, 155, 122, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 100% 100%, rgba(139, 201, 163, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 10% 20%, rgba(212, 165, 116, 0.08) 0%, transparent 40%),
+    radial-gradient(ellipse at 90% 80%, rgba(139, 168, 136, 0.06) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 50%, rgba(201, 168, 87, 0.04) 0%, transparent 60%),
     var(--primary-bg);
   pointer-events: none;
 }
@@ -113,7 +117,7 @@ code, pre, .highlight, .highlight code {
    Header & Navigation
    ============================================ */
 header, .header, nav, .nav {
-  background: rgba(255, 248, 243, 0.95) !important;
+  background: rgba(245, 241, 235, 0.95) !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   border-bottom: 1px solid var(--border-light) !important;
@@ -162,11 +166,26 @@ main, .main {
 }
 
 /* ============================================
-   Home Page / Profile
+   Home Page / Profile - Illustration Focus
    ============================================ */
 .profile {
-  padding: 3rem 0 !important;
+  padding: 2rem 0 3rem !important;
   text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+/* Hero illustration - display prominently */
+.profile img {
+  max-width: 450px !important;
+  width: 100% !important;
+  height: auto !important;
+  margin-bottom: 2rem !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  order: -1 !important; /* Put image above text */
 }
 
 .profile .profile-title {
@@ -184,9 +203,10 @@ main, .main {
   font-weight: 400 !important;
   max-width: 500px;
   margin: 0 auto 2rem auto;
+  line-height: 1.6;
 }
 
-/* Buttons - New Coral Style */
+/* Buttons - Warm tan style matching illustrations */
 .profile .buttons, .buttons {
   display: flex;
   gap: 1rem;
@@ -205,13 +225,13 @@ main, .main {
   font-size: 0.95rem !important;
   text-decoration: none !important;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  box-shadow: 0 4px 14px rgba(255, 155, 122, 0.35) !important;
+  box-shadow: 0 4px 14px rgba(212, 165, 116, 0.35) !important;
 }
 
 .profile .buttons a:hover, .buttons a:hover {
-  background: var(--accent-hover) !important;
+  background: var(--accent-terracotta) !important;
   transform: translateY(-2px) !important;
-  box-shadow: 0 6px 20px rgba(255, 155, 122, 0.45) !important;
+  box-shadow: 0 6px 20px rgba(184, 111, 76, 0.4) !important;
 }
 
 .profile .buttons a:active {
@@ -232,8 +252,12 @@ main, .main {
 }
 
 /* ============================================
-   Post Cards - Card-Based Design
+   Post Cards - Grid Layout Like Concept
    ============================================ */
+.posts-group, .post-entry + .post-entry {
+  display: block;
+}
+
 .post-entry, .entry, article.post-entry {
   background: var(--card-bg) !important;
   border: none !important;
@@ -243,16 +267,34 @@ main, .main {
   margin-bottom: 1.5rem !important;
   overflow: hidden !important;
   padding: 1.5rem !important;
+  position: relative !important;
+}
+
+/* Subtle left border accent */
+.post-entry::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: linear-gradient(180deg, var(--accent-primary) 0%, var(--accent-sage) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.post-entry:hover::before {
+  opacity: 1;
 }
 
 .post-entry:hover, .entry:hover {
   transform: translateY(-4px) !important;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1) !important;
 }
 
 .entry-header h2, .post-entry .entry-header h2, .entry-title {
   font-family: 'Crimson Pro', Georgia, serif !important;
-  font-size: 1.5rem !important;
+  font-size: 1.4rem !important;
   font-weight: 600 !important;
   color: var(--text-primary) !important;
   transition: color 0.2s ease !important;
@@ -268,6 +310,13 @@ main, .main {
   color: var(--text-secondary) !important;
   font-size: 0.95rem !important;
   line-height: 1.6 !important;
+}
+
+/* Post meta styling */
+.post-entry .post-meta, .entry-footer {
+  color: var(--text-muted) !important;
+  font-size: 0.85rem !important;
+  margin-top: 0.75rem !important;
 }
 
 /* Card animation on load */
@@ -287,12 +336,12 @@ main, .main {
   opacity: 0;
 }
 
-.post-entry:nth-child(1) { animation-delay: 0.1s; }
-.post-entry:nth-child(2) { animation-delay: 0.15s; }
-.post-entry:nth-child(3) { animation-delay: 0.2s; }
-.post-entry:nth-child(4) { animation-delay: 0.25s; }
-.post-entry:nth-child(5) { animation-delay: 0.3s; }
-.post-entry:nth-child(6) { animation-delay: 0.35s; }
+.post-entry:nth-child(1) { animation-delay: 0.05s; }
+.post-entry:nth-child(2) { animation-delay: 0.1s; }
+.post-entry:nth-child(3) { animation-delay: 0.15s; }
+.post-entry:nth-child(4) { animation-delay: 0.2s; }
+.post-entry:nth-child(5) { animation-delay: 0.25s; }
+.post-entry:nth-child(6) { animation-delay: 0.3s; }
 
 /* ============================================
    Single Post Page
@@ -319,7 +368,7 @@ article .post-title,
   margin-top: 1rem !important;
 }
 
-/* Post content in a card */
+/* Post content styling */
 .post-content {
   background: var(--card-bg) !important;
   border-radius: 20px !important;
@@ -328,6 +377,16 @@ article .post-title,
   color: var(--text-primary) !important;
   font-size: 1.05rem !important;
   line-height: 1.8 !important;
+}
+
+/* Images in content - styled like illustrations */
+.post-content img {
+  border-radius: 16px !important;
+  max-width: 100% !important;
+  height: auto !important;
+  margin: 2rem auto !important;
+  display: block !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
 }
 
 .post-content h2 {
@@ -343,7 +402,7 @@ article .post-title,
 .post-content h3 {
   font-family: 'Crimson Pro', Georgia, serif !important;
   font-size: 1.4rem !important;
-  color: var(--accent-primary) !important;
+  color: var(--accent-terracotta) !important;
   margin-top: 2rem !important;
 }
 
@@ -355,8 +414,8 @@ article .post-title,
 }
 
 .post-content a:hover {
-  color: var(--accent-hover) !important;
-  border-bottom-color: var(--accent-primary) !important;
+  color: var(--accent-terracotta) !important;
+  border-bottom-color: var(--accent-terracotta) !important;
 }
 
 .post-content strong {
@@ -380,10 +439,10 @@ article .post-title,
 }
 
 /* ============================================
-   Code Blocks
+   Code Blocks - Warm tones
    ============================================ */
 .highlight, pre, .highlight pre {
-  background: #FFF5EE !important;
+  background: #FAF8F5 !important;
   border: 1px solid var(--accent-secondary) !important;
   border-radius: 12px !important;
 }
@@ -414,7 +473,7 @@ code {
 }
 
 .copy-code:hover {
-  background: var(--accent-hover) !important;
+  background: var(--accent-terracotta) !important;
 }
 
 /* ============================================
@@ -441,7 +500,7 @@ th {
 
 td {
   padding: 0.875rem 1rem !important;
-  border-bottom: 1px solid rgba(255, 155, 122, 0.1) !important;
+  border-bottom: 1px solid rgba(212, 165, 116, 0.15) !important;
   color: var(--text-primary) !important;
 }
 
@@ -450,15 +509,15 @@ tr:last-child td {
 }
 
 tr:hover {
-  background: rgba(255, 155, 122, 0.05) !important;
+  background: rgba(212, 165, 116, 0.05) !important;
 }
 
 /* ============================================
-   Blockquotes
+   Blockquotes - Warm accent
    ============================================ */
 blockquote {
   border-left: 4px solid var(--accent-primary) !important;
-  background: rgba(255, 155, 122, 0.08) !important;
+  background: rgba(212, 165, 116, 0.08) !important;
   padding: 1.25rem 1.5rem !important;
   margin: 1.5rem 0 !important;
   border-radius: 0 12px 12px 0 !important;
@@ -493,7 +552,7 @@ blockquote {
 }
 
 /* ============================================
-   Tags
+   Tags - Pill style with warm colors
    ============================================ */
 .post-tags a, .terms-tags a, .tag {
   background: var(--accent-secondary) !important;
@@ -531,7 +590,7 @@ blockquote {
 
 #searchbox:focus, input[type="search"]:focus {
   border-color: var(--accent-primary) !important;
-  box-shadow: 0 0 0 4px rgba(255, 155, 122, 0.15) !important;
+  box-shadow: 0 0 0 4px rgba(212, 165, 116, 0.2) !important;
   outline: none !important;
 }
 
@@ -550,7 +609,7 @@ blockquote {
    Footer
    ============================================ */
 footer, .footer {
-  background: rgba(255, 248, 243, 0.8) !important;
+  background: rgba(245, 241, 235, 0.8) !important;
   backdrop-filter: blur(10px) !important;
   border-top: 1px solid var(--border-light) !important;
   color: var(--text-muted) !important;
@@ -615,7 +674,21 @@ footer a:hover, .footer a:hover {
 }
 
 /* ============================================
-   Scrollbar
+   Archive / List Pages
+   ============================================ */
+.archive-year {
+  font-family: 'Crimson Pro', serif !important;
+  font-size: 1.5rem !important;
+  color: var(--accent-primary) !important;
+  font-weight: 600 !important;
+}
+
+.archive-month {
+  color: var(--text-secondary) !important;
+}
+
+/* ============================================
+   Scrollbar - Warm tones
    ============================================ */
 ::-webkit-scrollbar {
   width: 10px;
@@ -639,7 +712,7 @@ footer a:hover, .footer a:hover {
    Selection
    ============================================ */
 ::selection {
-  background: rgba(255, 155, 122, 0.3);
+  background: rgba(212, 165, 116, 0.3);
   color: var(--text-primary);
 }
 
@@ -655,11 +728,27 @@ hr {
 }
 
 /* ============================================
+   About Page - Hero Image
+   ============================================ */
+.post-single .post-content > p:first-child img,
+.single .post-content > p:first-child img {
+  max-width: 350px !important;
+  margin: 0 auto 2rem auto !important;
+  display: block !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+/* ============================================
    Mobile Responsiveness
    ============================================ */
 @media (max-width: 768px) {
   .profile .profile-title {
     font-size: 2.25rem !important;
+  }
+  
+  .profile img {
+    max-width: 300px !important;
   }
   
   .post-header .post-title, .post-title {

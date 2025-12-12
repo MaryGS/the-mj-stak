@@ -4,6 +4,8 @@ ShowToc: false
 ShowBreadCrumbs: false
 ---
 
+![Candidex Team](/images/image2.png)
+
 ## What is Candidex?
 
 **Candidex** is an AI-powered candidate matching system that transforms how HR departments find talent. Instead of relying on keyword matching that misses great candidates, Candidex uses Large Language Models and semantic search to understand what recruiters actually need.

@@ -47,9 +47,9 @@ minify.disableXML = true
     enabled = true
     title = "Candidex"
     subtitle = "Finding the right candidate shouldn't require reading 300 CVs. We built a smarter way."
-    imageUrl = ""
-    imageWidth = 120
-    imageHeight = 120
+    imageUrl = "/images/image1.png"
+    imageWidth = 400
+    imageHeight = 400
     
     [[params.profileMode.buttons]]
       name = "Read the Blog"
