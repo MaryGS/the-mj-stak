@@ -593,6 +593,8 @@ body:not(.home):not(.list) .posts-grid {
   max-width: 500px;
   width: 100%;
   height: auto;
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
 .hero-illustration-caption {
@@ -679,12 +681,13 @@ article .post-title,
 
 /* Images in content */
 .post-content img {
-  border-radius: 12px !important;
+  border-radius: 0 !important;
   max-width: 100% !important;
   height: auto !important;
   margin: 1.5rem auto !important;
   display: block !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
 .post-content h2 {
@@ -1050,6 +1053,30 @@ hr {
   display: block !important;
   box-shadow: none !important;
   border-radius: 0 !important;
+}
+
+/* ============================================
+   Transparent Background for All Images
+   (except sidebar-profile)
+   ============================================ */
+img {
+  background: transparent !important;
+}
+
+/* Remove box-shadow/background effects from images (except sidebar) */
+.profile img,
+.post-content img,
+.hero-illustration img,
+main img,
+article img {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Keep sidebar profile image styling */
+.sidebar-profile img {
+  background: var(--card-bg) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
 }
 
 /* ============================================
