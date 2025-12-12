@@ -967,23 +967,18 @@ footer a:hover, .footer a:hover {
   color: var(--accent-primary) !important;
 }
 
+.post-footer,
 .paginav {
   background: var(--card-bg) !important;
-  border: 1px solid var(--border-light) !important;
-  border-radius: 12px !important;
-  overflow: hidden !important;
-}
-
-.paginav a {
-  color: var(--text-secondary) !important;
-  padding: 0.875rem !important;
-  transition: all 0.2s ease !important;
-  font-size: 0.9rem !important;
-}
-
-.paginav a:hover {
-  background: var(--accent-secondary) !important;
-  color: var(--text-primary) !important;
+  border: none !important;
+  border-radius: 16px !important;
+  padding: 1.5rem !important;
+  margin-top: 3rem !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06) !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 2rem !important;
 }
 
 /* ============================================
