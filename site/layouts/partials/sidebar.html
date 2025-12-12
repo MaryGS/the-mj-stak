@@ -1,0 +1,32 @@
+<aside class="blog-sidebar">
+  <div class="sidebar-profile">
+    <img src="/images/image3.png" alt="Candidex" />
+    <h3>Candidex</h3>
+    <p class="bio">AI-powered candidate matching using LLMs & vector search</p>
+  </div>
+  
+  <div class="sidebar-stats">
+    <div class="stat-item">
+      <span class="stat-number">{{ len (where .Site.RegularPages "Section" "posts") }}</span>
+      <span class="stat-label">Posts</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">{{ len .Site.Taxonomies.tags }}</span>
+      <span class="stat-label">Tags</span>
+    </div>
+  </div>
+  
+  <div class="sidebar-tags">
+    <h4>Popular Tags</h4>
+    <div class="tag-list">
+      {{ range first 8 .Site.Taxonomies.tags.ByCount }}
+        <a href="{{ .Page.Permalink }}" class="tag-pill">{{ .Page.Title }}</a>
+      {{ end }}
+    </div>
+  </div>
+  
+  <div class="sidebar-cta">
+    <a href="/about/">Learn More</a>
+  </div>
+</aside>
+

@@ -42,14 +42,17 @@ minify.disableXML = true
   showtoc = true
   tocopen = false
   
+  # Main sections to display on home
+  mainSections = ["posts"]
+  
   # Home page profile
   [params.profileMode]
     enabled = true
     title = "Candidex"
     subtitle = "Finding the right candidate shouldn't require reading 300 CVs. We built a smarter way."
-    imageUrl = "/images/image1.png"
-    imageWidth = 400
-    imageHeight = 400
+    imageUrl = "/images/image2.png"
+    imageWidth = 320
+    imageHeight = 320
     
     [[params.profileMode.buttons]]
       name = "Read the Blog"

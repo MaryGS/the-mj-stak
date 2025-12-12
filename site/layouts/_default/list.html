@@ -1,0 +1,57 @@
+{{- define "main" }}
+
+<header class="page-header">
+    <h1>{{ .Title }}</h1>
+    {{- if .Description }}
+    <p class="page-description">{{ .Description }}</p>
+    {{- end }}
+</header>
+
+{{/* Layout with sidebar */}}
+<div class="layout-wrapper">
+    {{- partial "sidebar.html" . }}
+    
+    <div class="posts-section">
+        <div class="posts-grid">
+            {{- $pages := .Pages }}
+            {{- if .IsHome }}
+            {{- $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
+            {{- end }}
+            {{- $notHidden := where $pages "Params.hidden" "!=" true }}
+            {{- $filtered := $notHidden }}
+            {{- $paginator := .Paginate $filtered }}
+            
+            {{- range $paginator.Pages }}
+            <article class="post-entry">
+                <header class="entry-header">
+                    <h2>
+                        <a href="{{ .Permalink }}">{{ .Title }}</a>
+                    </h2>
+                </header>
+                <div class="entry-content">
+                    <p>{{ .Summary | plainify | truncate 120 }}</p>
+                </div>
+                <footer class="entry-footer">
+                    <span class="entry-meta">{{ .Date.Format "Jan 2, 2006" }} · {{ .ReadingTime }} min read</span>
+                    {{- if .Params.tags }}
+                    <div class="entry-tags">
+                        {{- range first 2 .Params.tags }}
+                        <a href="{{ "tags/" | absURL }}{{ . | urlize }}/" class="tag">{{ . }}</a>
+                        {{- end }}
+                    </div>
+                    {{- end }}
+                </footer>
+            </article>
+            {{- end }}
+        </div>
+        
+        {{- if gt $paginator.TotalPages 1 }}
+        <nav class="pagination">
+            {{ template "_internal/pagination.html" . }}
+        </nav>
+        {{- end }}
+    </div>
+</div>
+
+{{- end }}
+

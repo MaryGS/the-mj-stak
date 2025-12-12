@@ -1,0 +1,61 @@
+{{- define "main" }}
+
+{{- if .Site.Params.profileMode.enabled }}
+<div class="profile">
+    {{- with .Site.Params.profileMode.imageUrl }}
+    <img src="{{ . }}" alt="{{ $.Site.Params.profileMode.title | default $.Site.Title }}" />
+    {{- end }}
+    <h1 class="profile-title">{{ .Site.Params.profileMode.title | default .Site.Title }}</h1>
+    <span class="profile-subtitle">{{ .Site.Params.profileMode.subtitle }}</span>
+    <div class="buttons">
+        {{- range .Site.Params.profileMode.buttons }}
+        <a href="{{ .url | absURL }}" rel="noopener">{{ .name }}</a>
+        {{- end }}
+    </div>
+</div>
+{{- end }}
+
+{{/* Main layout with sidebar */}}
+<div class="layout-wrapper">
+    {{- partial "sidebar.html" . }}
+    
+    <div class="posts-section">
+        <h2 class="section-title">Latest Posts</h2>
+        <div class="posts-grid">
+            {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+            {{- $notHidden := where .Site.RegularPages "Params.hidden" "!=" true }}
+            {{- $filtered := ($pages | intersect $notHidden) }}
+            {{- $paginator := .Paginate ($filtered) }}
+            {{- range $paginator.Pages }}
+            {{- $class := "post-entry" }}
+            <article class="{{ $class }}">
+                <header class="entry-header">
+                    <h2 class="entry-hint-parent">
+                        <a href="{{ .Permalink }}">{{ .Title }}</a>
+                    </h2>
+                </header>
+                <div class="entry-content">
+                    <p>{{ .Summary | plainify | truncate 120 }}</p>
+                </div>
+                <footer class="entry-footer">
+                    <span class="entry-meta">{{ .Date.Format "Jan 2, 2006" }} · {{ .ReadingTime }} min read</span>
+                </footer>
+            </article>
+            {{- end }}
+        </div>
+        
+        {{/* Hero illustration at bottom */}}
+        <div class="hero-illustration">
+            <img src="/images/image1.png" alt="Candidex - AI Recruitment" />
+        </div>
+        
+        {{- if gt $paginator.TotalPages 1 }}
+        <nav class="pagination">
+            {{ template "_internal/pagination.html" . }}
+        </nav>
+        {{- end }}
+    </div>
+</div>
+
+{{- end }}
+
