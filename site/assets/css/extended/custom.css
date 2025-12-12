@@ -378,20 +378,29 @@ main, .main {
 
 /* ============================================
    Posts Grid - Card Layout (3 columns)
+   ONLY for list/home pages
    ============================================ */
-.posts-grid,
-.first-entry ~ .post-entry,
-.post-entry:not(.first-entry) {
-  /* Single column layout */
-}
 
-/* Target the posts container */
-main.main > article,
-main.main > .posts-group,
-.archive-posts {
+/* Target the posts container ONLY on home and list pages */
+.home main.main > article,
+.home main.main > .posts-group,
+.list main.main > article,
+.list main.main > .posts-group,
+.list .archive-posts,
+.home .posts-grid,
+.list .posts-grid {
   display: grid !important;
   grid-template-columns: repeat(3, 1fr) !important;
   gap: 24px !important;
+}
+
+/* Remove grid from single post pages */
+body:not(.home):not(.list) main.main > article,
+body:not(.home):not(.list) main.main > .posts-group,
+body:not(.home):not(.list) .archive-posts,
+body:not(.home):not(.list) .posts-grid {
+  display: block !important;
+  grid-template-columns: none !important;
 }
 
 /* Individual card styling */
