@@ -50,7 +50,7 @@ minify.disableXML = true
     enabled = true
     title = "Candidex"
     subtitle = "Finding the right candidate shouldn't require reading 300 CVs. We built a smarter way."
-    imageUrl = "/images/image2.png"
+    imageUrl = "/images/image1.png"
     imageWidth = 320
     imageHeight = 320
     

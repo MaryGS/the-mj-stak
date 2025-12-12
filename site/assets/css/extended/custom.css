@@ -197,9 +197,10 @@ main, .main {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0 auto 0.75rem auto;
   object-fit: cover;
   border: 3px solid var(--accent-secondary);
+  display: block;
 }
 
 .sidebar-profile h3 {
