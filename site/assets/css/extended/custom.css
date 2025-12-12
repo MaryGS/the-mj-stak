@@ -377,24 +377,25 @@ main, .main {
 }
 
 /* ============================================
-   Posts Grid - Card Layout (3 columns)
+   Posts Grid - Single Column Centered Layout
    ============================================ */
 .posts-grid,
 .first-entry ~ .post-entry,
 .post-entry:not(.first-entry) {
-  /* Grid will be applied to container */
+  /* Single column layout */
 }
 
-/* Target the posts container */
+/* Target the posts container - Single column centered */
 main.main > article,
 main.main > .posts-group,
-.archive-posts {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 24px !important;
+.archive-posts,
+.posts-container {
+  display: block !important;
+  max-width: 800px !important;
+  margin: 0 auto !important;
 }
 
-/* Individual card styling */
+/* Individual card styling - Single column */
 .post-entry, .entry, article.post-entry {
   background: var(--card-bg) !important;
   border: none !important;
@@ -405,8 +406,7 @@ main.main > .posts-group,
   padding: 1.25rem !important;
   display: flex !important;
   flex-direction: column !important;
-  height: 100% !important;
-  margin: 0 !important;
+  margin-bottom: 1.5rem !important;
 }
 
 /* Remove the old decorative border */
@@ -512,9 +512,9 @@ main.main > .posts-group,
 }
 
 .posts-grid {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 24px !important;
+  display: block !important;
+  max-width: 800px !important;
+  margin: 0 auto !important;
 }
 
 .page-header {
@@ -1007,7 +1007,7 @@ hr {
    Responsive Design
    ============================================ */
 
-/* Mobile - Stack sidebar, single column cards */
+/* Mobile - Stack sidebar, single column */
 @media (max-width: 768px) {
   .layout-wrapper {
     grid-template-columns: 1fr !important;
@@ -1022,8 +1022,9 @@ hr {
   .posts-grid,
   main.main > article,
   main.main > .posts-group,
-  .archive-posts {
-    grid-template-columns: 1fr !important;
+  .archive-posts,
+  .posts-container {
+    max-width: 100% !important;
   }
   
   .profile .profile-title {
@@ -1065,7 +1066,7 @@ hr {
   }
 }
 
-/* Tablet - No sidebar, 2 column cards */
+/* Tablet - No sidebar, single column centered */
 @media (min-width: 769px) and (max-width: 1024px) {
   .layout-wrapper {
     grid-template-columns: 1fr !important;
@@ -1078,8 +1079,10 @@ hr {
   .posts-grid,
   main.main > article,
   main.main > .posts-group,
-  .archive-posts {
-    grid-template-columns: repeat(2, 1fr) !important;
+  .archive-posts,
+  .posts-container {
+    max-width: 800px !important;
+    margin: 0 auto !important;
   }
   
   .profile .profile-title {
@@ -1091,7 +1094,7 @@ hr {
   }
 }
 
-/* Desktop - Sidebar + 3 column cards */
+/* Desktop - Sidebar + single column centered content */
 @media (min-width: 1025px) {
   .layout-wrapper {
     grid-template-columns: 240px 1fr;
@@ -1101,8 +1104,10 @@ hr {
   .posts-grid,
   main.main > article,
   main.main > .posts-group,
-  .archive-posts {
-    grid-template-columns: repeat(3, 1fr) !important;
+  .archive-posts,
+  .posts-container {
+    max-width: 800px !important;
+    margin: 0 auto !important;
   }
 }
 
