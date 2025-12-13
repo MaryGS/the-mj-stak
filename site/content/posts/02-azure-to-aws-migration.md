@@ -32,66 +32,64 @@ This post documents our journey from a C#/Azure architecture to Python/AWS+LLM, 
 
 ### The Original Azure Architecture
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        React Frontend                            │
-└─────────────────────────────┬───────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                     C# .NET 8.0 Backend                          │
-│                     (ASP.NET Core Web API)                       │
-└─────────────────────────────┬───────────────────────────────────┘
-                              │
-        ┌─────────────────────┼─────────────────────┐
-        │                     │                     │
-        ▼                     ▼                     ▼
-┌───────────────┐   ┌─────────────────┐   ┌─────────────────┐
-│ Azure Blob    │   │ Azure Document  │   │ Azure Cognitive │
-│ Storage /     │   │ Intelligence    │   │ Search          │
-│ Data Lake     │   │ (Form Recog.)   │   │                 │
-└───────────────┘   └─────────────────┘   └─────────────────┘
-        │                     │                     │
-        │                     ▼                     │
-        │           ┌─────────────────┐             │
-        │           │ Azure Text      │             │
-        │           │ Analytics       │             │
-        │           └─────────────────┘             │
-        │                     │                     │
-        └─────────────────────┼─────────────────────┘
-                              │
-                              ▼
-                    ┌─────────────────┐
-                    │ OpenAI API      │
-                    │ (Chat/Translate)│
-                    └─────────────────┘
+```text
+                    +---------------------------+
+                    |      React Frontend       |
+                    +-------------+-------------+
+                                  |
+                                  v
+                    +---------------------------+
+                    |   C# .NET 8.0 Backend     |
+                    |  (ASP.NET Core Web API)   |
+                    +-------------+-------------+
+                                  |
+            +---------------------+---------------------+
+            |                     |                     |
+            v                     v                     v
+   +-----------------+   +-----------------+   +-----------------+
+   |   Azure Blob    |   | Azure Document  |   | Azure Cognitive |
+   |   Storage /     |   |  Intelligence   |   |     Search      |
+   |   Data Lake     |   |  (Form Recog.)  |   |                 |
+   +-----------------+   +--------+--------+   +-----------------+
+                                  |
+                                  v
+                         +-----------------+
+                         |   Azure Text    |
+                         |   Analytics     |
+                         +--------+--------+
+                                  |
+                                  v
+                         +-----------------+
+                         |   OpenAI API    |
+                         |(Chat/Translate) |
+                         +-----------------+
 ```
 
 ### The New Python/AWS Architecture
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    React Frontend (unchanged)                    │
-└─────────────────────────────┬───────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                    Python FastAPI Backend                        │
-└─────────────────────────────┬───────────────────────────────────┘
-                              │
-            ┌─────────────────┴─────────────────┐
-            │                                   │
-            ▼                                   ▼
-    ┌───────────────┐                   ┌─────────────────┐
-    │   AWS S3      │                   │  OpenAI / LLM   │
-    │   (Storage)   │                   │  (Everything)   │
-    └───────────────┘                   └─────────────────┘
-                                               │
-                                               ▼
-                                        ┌─────────────────┐
-                                        │  Vector DB      │
-                                        │  (ChromaDB)     │
-                                        └─────────────────┘
+```text
+                    +---------------------------+
+                    | React Frontend (unchanged)|
+                    +-------------+-------------+
+                                  |
+                                  v
+                    +---------------------------+
+                    |  Python FastAPI Backend   |
+                    +-------------+-------------+
+                                  |
+                    +-------------+-------------+
+                    |                           |
+                    v                           v
+           +-----------------+         +-----------------+
+           |     AWS S3      |         |  OpenAI / LLM   |
+           |    (Storage)    |         |  (Everything)   |
+           +-----------------+         +--------+--------+
+                                                |
+                                                v
+                                       +-----------------+
+                                       |   Vector DB     |
+                                       |   (ChromaDB)    |
+                                       +-----------------+
 ```
 
 The difference is striking. We went from 5+ Azure services to essentially 2 external dependencies: S3 for storage and an LLM for intelligence.
@@ -254,13 +252,15 @@ Azure Cognitive Search is powerful but complex. It requires defining schemas, ma
 
 **The concept shift:**
 
-```
+```text
 Traditional Search: "Find documents containing 'Python' AND 'AWS'"
-                    ↓
+                    |
+                    v
                     Exact keyword matching
-                    
+
 Vector Search:      "Find documents similar to this meaning"
-                    ↓
+                    |
+                    v
                     Semantic similarity via embeddings
 ```
 

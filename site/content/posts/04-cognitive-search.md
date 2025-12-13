@@ -379,44 +379,44 @@ This last point would become a major driver for architectural evolution—but th
 
 Putting it all together:
 
-```
-┌──────────────────────────────────────────────────────────────────┐
-│                        User Query                                 │
-│           "Find Python developers with 5+ years"                  │
-└──────────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌──────────────────────────────────────────────────────────────────┐
-│                    Azure Cognitive Search                         │
-│  - Full-text search across TechnicalSkills, ProfessionalSummary  │
-│  - Filter by Language if specified                                │
-│  - Return top 10 ranked matches                                   │
-└──────────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌──────────────────────────────────────────────────────────────────┐
-│                       Result Processor                            │
-│  - Extract relevant fields                                        │
-│  - Format for display                                             │
-│  - Prepare context for OpenAI                                     │
-└──────────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌──────────────────────────────────────────────────────────────────┐
-│                         OpenAI GPT-4                              │
-│  - Analyze candidate profiles                                     │
-│  - Generate intelligent summary                                   │
-│  - Recommend best matches with reasoning                          │
-└──────────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌──────────────────────────────────────────────────────────────────┐
-│                        User Response                              │
-│  "Based on your criteria, here are the top candidates:           │
-│   1. Maria Garcia - 7 years Python, AWS certified                │
-│   2. James Chen - 6 years Python, led backend team               │
-│   Would you like more details about either candidate?"           │
-└──────────────────────────────────────────────────────────────────┘
+```text
+  +------------------------------------------------------------------+
+  |                         User Query                               |
+  |            "Find Python developers with 5+ years"                |
+  +------------------------------------------------------------------+
+                                |
+                                v
+  +------------------------------------------------------------------+
+  |                    Azure Cognitive Search                        |
+  |   - Full-text search across TechnicalSkills, ProfessionalSummary |
+  |   - Filter by Language if specified                              |
+  |   - Return top 10 ranked matches                                 |
+  +------------------------------------------------------------------+
+                                |
+                                v
+  +------------------------------------------------------------------+
+  |                       Result Processor                           |
+  |   - Extract relevant fields                                      |
+  |   - Format for display                                           |
+  |   - Prepare context for OpenAI                                   |
+  +------------------------------------------------------------------+
+                                |
+                                v
+  +------------------------------------------------------------------+
+  |                         OpenAI GPT-4                             |
+  |   - Analyze candidate profiles                                   |
+  |   - Generate intelligent summary                                 |
+  |   - Recommend best matches with reasoning                        |
+  +------------------------------------------------------------------+
+                                |
+                                v
+  +------------------------------------------------------------------+
+  |                        User Response                             |
+  |   "Based on your criteria, here are the top candidates:          |
+  |    1. Maria Garcia - 7 years Python, AWS certified               |
+  |    2. James Chen - 6 years Python, led backend team              |
+  |    Would you like more details about either candidate?"          |
+  +------------------------------------------------------------------+
 ```
 
 ## Wrapping Up the Azure Implementation

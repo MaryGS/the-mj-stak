@@ -52,64 +52,64 @@ It was time to rethink our architecture.
 
 ### The Azure Architecture (Before)
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        React Frontend                            │
-└─────────────────────────────────┬───────────────────────────────┘
-                                  │
-                                  ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                     C# .NET 8.0 Backend                          │
-│                     (ASP.NET Core Web API)                       │
-└─────────────────────────────────┬───────────────────────────────┘
-                                  │
-        ┌─────────────────────────┼─────────────────────┐
-        │                         │                     │
-        ▼                         ▼                     ▼
-┌───────────────┐       ┌─────────────────┐   ┌─────────────────┐
-│ Azure Blob    │       │ Azure Document  │   │ Azure Cognitive │
-│ Storage /     │       │ Intelligence    │   │ Search          │
-│ Data Lake     │       └─────────────────┘   └─────────────────┘
-└───────────────┘               │
-                                ▼
-                      ┌─────────────────┐
-                      │ Azure Text      │
-                      │ Analytics       │
-                      └─────────────────┘
-                                │
-                                ▼
-                      ┌─────────────────┐
-                      │ OpenAI API      │
-                      └─────────────────┘
+```text
+                    +---------------------------+
+                    |      React Frontend       |
+                    +-------------+-------------+
+                                  |
+                                  v
+                    +---------------------------+
+                    |   C# .NET 8.0 Backend     |
+                    |  (ASP.NET Core Web API)   |
+                    +-------------+-------------+
+                                  |
+            +---------------------+---------------------+
+            |                     |                     |
+            v                     v                     v
+   +-----------------+   +-----------------+   +-----------------+
+   |   Azure Blob    |   | Azure Document  |   | Azure Cognitive |
+   |   Storage       |   |  Intelligence   |   |     Search      |
+   +-----------------+   +--------+--------+   +-----------------+
+                                  |
+                                  v
+                         +-----------------+
+                         |   Azure Text    |
+                         |   Analytics     |
+                         +--------+--------+
+                                  |
+                                  v
+                         +-----------------+
+                         |   OpenAI API    |
+                         +-----------------+
 ```
 
 **5+ services**, each with its own SDK, credentials, and failure modes.
 
 ### The New Architecture (After)
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    React Frontend (unchanged)                    │
-└─────────────────────────────────┬───────────────────────────────┘
-                                  │
-                                  ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                    Python FastAPI Backend                        │
-└─────────────────────────────────┬───────────────────────────────┘
-                                  │
-            ┌─────────────────────┴─────────────────┐
-            │                                       │
-            ▼                                       ▼
-    ┌───────────────┐                     ┌─────────────────┐
-    │   AWS S3      │                     │  LLM API        │
-    │   (Storage)   │                     │  (Everything)   │
-    └───────────────┘                     └─────────────────┘
-                                                  │
-                                                  ▼
-                                          ┌─────────────────┐
-                                          │  Vector Store   │
-                                          │  (Embeddings)   │
-                                          └─────────────────┘
+```text
+                    +---------------------------+
+                    | React Frontend (unchanged)|
+                    +-------------+-------------+
+                                  |
+                                  v
+                    +---------------------------+
+                    |  Python FastAPI Backend   |
+                    +-------------+-------------+
+                                  |
+                    +-------------+-------------+
+                    |                           |
+                    v                           v
+           +-----------------+         +-----------------+
+           |     AWS S3      |         |    LLM API      |
+           |    (Storage)    |         |  (Everything)   |
+           +-----------------+         +--------+--------+
+                                                |
+                                                v
+                                       +-----------------+
+                                       |  Vector Store   |
+                                       |  (Embeddings)   |
+                                       +-----------------+
 ```
 
 **2-3 services**. Storage, intelligence, and search—unified and simple.
@@ -265,12 +265,12 @@ This was the game-changer for search quality. Instead of keyword matching, we no
 
 **The conceptual shift:**
 
-```
+```text
 Keyword Search:   "Find 'Python' AND 'AWS' in documents"
-                  → Exact text matching
+                  --> Exact text matching
                   
 Vector Search:    "Find documents semantically similar to this query"
-                  → Meaning-based matching
+                  --> Meaning-based matching
 ```
 
 **New embedding-based search:**

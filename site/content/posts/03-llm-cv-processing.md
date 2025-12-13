@@ -71,41 +71,41 @@ The LLM receives this prompt along with raw CV text and returns structured JSON.
 
 Here's how a CV flows through our system:
 
-```
-┌─────────────────┐
-│  CV Upload      │
-│  (PDF/DOCX)     │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  Text           │
-│  Extraction     │  ← PyPDF2, pdfplumber, python-docx
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  LLM            │
-│  Processing     │  ← OpenAI GPT-4 / Claude
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  Structured     │
-│  JSON Data      │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  Vector         │
-│  Embedding      │  ← OpenAI text-embedding-3-small
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  Storage        │
-│  (S3 + VectorDB)│
-└─────────────────┘
+```text
+       +-----------------+
+       |   CV Upload     |
+       |   (PDF/DOCX)    |
+       +--------+--------+
+                |
+                v
+       +-----------------+
+       |     Text        |  <-- PyPDF2, pdfplumber, python-docx
+       |   Extraction    |
+       +--------+--------+
+                |
+                v
+       +-----------------+
+       |      LLM        |  <-- OpenAI GPT-4 / Claude
+       |   Processing    |
+       +--------+--------+
+                |
+                v
+       +-----------------+
+       |   Structured    |
+       |   JSON Data     |
+       +--------+--------+
+                |
+                v
+       +-----------------+
+       |     Vector      |  <-- OpenAI text-embedding-3-small
+       |   Embedding     |
+       +--------+--------+
+                |
+                v
+       +-----------------+
+       |    Storage      |
+       | (S3 + VectorDB) |
+       +-----------------+
 ```
 
 ### Code Walkthrough: The Extractor
@@ -186,10 +186,10 @@ Keyword search operates on a simple principle: match strings. This creates sever
 
 Vector embeddings transform text into numerical representations where semantic similarity corresponds to mathematical proximity.
 
-```
-"Python developer with AWS experience"  →  [0.23, -0.15, 0.87, ..., 0.42]
-"Software engineer skilled in Python and cloud" → [0.25, -0.12, 0.84, ..., 0.39]
-"Java programmer" → [-0.31, 0.44, -0.22, ..., 0.18]
+```text
+"Python developer with AWS experience"  -->  [0.23, -0.15, 0.87, ..., 0.42]
+"Software engineer skilled in Python and cloud" --> [0.25, -0.12, 0.84, ..., 0.39]
+"Java programmer" --> [-0.31, 0.44, -0.22, ..., 0.18]
 ```
 
 Notice how the first two vectors (semantically similar) would be mathematically close, while the third (semantically different) would be distant.

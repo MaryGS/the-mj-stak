@@ -24,23 +24,23 @@ Azure's ecosystem provided answers to all three.
 
 ## The Azure Architecture
 
-```
-┌─────────────────┐     ┌─────────────────────┐     ┌─────────────────┐
-│   CV Upload     │────▶│  Azure Blob Storage │────▶│    Document     │
-│   (React App)   │     │  / Data Lake        │     │   Intelligence  │
-└─────────────────┘     └─────────────────────┘     └────────┬────────┘
-                                                             │
-                                                             ▼
-┌─────────────────┐     ┌─────────────────────┐     ┌─────────────────┐
-│   Chat UI       │◀───▶│   ASP.NET Core      │◀───▶│ Azure Cognitive │
-│   (React)       │     │   Backend (C#)      │     │     Search      │
-└─────────────────┘     └──────────┬──────────┘     └─────────────────┘
-                                   │
-                                   ▼
-                        ┌─────────────────────┐
-                        │   OpenAI API        │
-                        │   (GPT-4 Turbo)     │
-                        └─────────────────────┘
+```text
+  +------------------+      +------------------+      +------------------+
+  |    CV Upload     |----->|   Azure Blob     |----->|    Document      |
+  |   (React App)    |      |    Storage       |      |  Intelligence    |
+  +------------------+      +------------------+      +--------+---------+
+                                                               |
+                                                               v
+  +------------------+      +------------------+      +------------------+
+  |     Chat UI      |<---->|   ASP.NET Core   |<---->| Azure Cognitive  |
+  |     (React)      |      |     Backend      |      |      Search      |
+  +------------------+      +--------+---------+      +------------------+
+                                     |
+                                     v
+                            +------------------+
+                            |    OpenAI API    |
+                            |   (GPT-4 Turbo)  |
+                            +------------------+
 ```
 
 ### The Services We Chose
@@ -190,7 +190,7 @@ The result? Natural conversations like:
 
 We built the frontend in React with a clean, professional interface:
 
-```javascript
+```jsx
 // components/SearchResults.js
 const SearchResults = ({ results }) => {
     return (

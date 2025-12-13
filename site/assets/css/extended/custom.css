@@ -431,20 +431,66 @@ body:not(.home):not(.list) .posts-grid {
 /* Card header with date */
 .entry-header {
   margin-bottom: 0.5rem !important;
+  background: transparent !important;
+  background-color: transparent !important;
 }
 
-.entry-header h2, .post-entry .entry-header h2, .entry-title {
+/* Force transparent background on entry-hint-parent and related elements */
+.entry-hint-parent,
+h2.entry-hint-parent,
+h1.entry-hint-parent,
+h3.entry-hint-parent,
+.post-entry .entry-hint-parent,
+.post-entry h2.entry-hint-parent,
+.entry-header .entry-hint-parent,
+.entry-header h2,
+.entry-header h2 a,
+.entry-hint-parent a,
+.post-entry .entry-header,
+.post-entry .entry-header h2,
+.post-entry .entry-header h2 a {
+  background: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Remove any pseudo-element backgrounds */
+.entry-hint-parent::before,
+.entry-hint-parent::after,
+.entry-header h2::before,
+.entry-header h2::after,
+.entry-footer::before,
+.entry-footer::after {
+  background: none !important;
+  display: none !important;
+}
+
+/* Force transparent background on entry-footer */
+.entry-footer,
+.post-entry .entry-footer,
+footer.entry-footer,
+.entry-footer span,
+.entry-footer a,
+.entry-meta {
+  background: none !important;
+  background-color: transparent !important;
+}
+
+.entry-header h2, .post-entry .entry-header h2, .entry-title,
+.entry-hint-parent {
   font-family: 'Crimson Pro', Georgia, serif !important;
   font-size: 1.25rem !important;
   font-weight: 600 !important;
   color: var(--text-primary) !important;
+  background: transparent !important;
+  background-color: transparent !important;
   transition: color 0.2s ease !important;
   margin-bottom: 0.25rem !important;
   line-height: 1.3 !important;
   display: -webkit-box !important;
-  -webkit-line-clamp: 2 !important;
+  -webkit-line-clamp: block !important;
   -webkit-box-orient: vertical !important;
-  overflow: hidden !important;
+  overflow: visible !important;
 }
 
 .post-entry:hover .entry-header h2,
@@ -471,6 +517,8 @@ body:not(.home):not(.list) .posts-grid {
   margin-top: auto !important;
   padding-top: 0.75rem !important;
   border-top: 1px solid var(--border-light) !important;
+  background: none !important;
+  background-color: transparent !important;
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
@@ -552,6 +600,8 @@ body:not(.home):not(.list) .posts-grid {
   gap: 0.5rem !important;
   margin-top: auto !important;
   padding-top: 0.75rem !important;
+  background: none !important;
+  background-color: transparent !important;
   border-top: 1px solid var(--border-light) !important;
 }
 
@@ -593,8 +643,6 @@ body:not(.home):not(.list) .posts-grid {
   max-width: 500px;
   width: 100%;
   height: auto;
-  background: transparent !important;
-  box-shadow: none !important;
 }
 
 .hero-illustration-caption {
@@ -681,13 +729,12 @@ article .post-title,
 
 /* Images in content */
 .post-content img {
-  border-radius: 0 !important;
+  border-radius: 12px !important;
   max-width: 100% !important;
   height: auto !important;
   margin: 1.5rem auto !important;
   display: block !important;
-  background: transparent !important;
-  box-shadow: none !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
 }
 
 .post-content h2 {
@@ -740,17 +787,85 @@ article .post-title,
 }
 
 /* ============================================
-   Code Blocks
+   Code Blocks - Proper Formatting
    ============================================ */
-.highlight, pre, .highlight pre {
-  background: var(--code-block-bg) !important;
-  border: 1px solid var(--accent-secondary) !important;
+.highlight {
+  background: #474747 !important;
   border-radius: 12px !important;
+  margin: 1.5rem 0 !important;
+  overflow: hidden !important;
+  width: 100% !important;
 }
 
-.highlight pre, pre code {
+.highlight pre {
+  background: #474747 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 1.5rem !important;
+  margin: 0 !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  text-align: left !important;
+  width: 100% !important;
+}
+
+.highlight pre[style] {
+  background: #474747 !important;
+  background-color: #474747 !important;
+}
+
+.highlight pre code {
   background: transparent !important;
   border: none !important;
+  padding: 0 !important;
+  font-family: monospace !important;
+  font-size: 13px !important;
+  line-height: 1.2 !important;
+  color: #f8f8f2 !important;
+  display: block !important;
+  text-align: left !important;
+  white-space: pre !important;
+}
+
+/* Standalone pre blocks (without .highlight wrapper) */
+pre {
+  background: #474747 !important;
+  border-radius: 12px !important;
+  padding: 1.5rem !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  margin: 1.5rem 0 !important;
+  text-align: left !important;
+  width: 100% !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+pre[style] {
+  background: #474747 !important;
+  background-color: #474747 !important;
+}
+
+pre code {
+  background: transparent !important;
+  font-family: monospace !important;
+  font-size: 13px !important;
+  line-height: 1.2 !important;
+  color: #f8f8f2 !important;
+  display: block !important;
+  text-align: left !important;
+  white-space: pre !important;
+}
+
+/* Hide any scrollbar styling issues */
+.highlight::-webkit-scrollbar,
+pre::-webkit-scrollbar {
+  display: none !important;
+}
+
+.highlight, pre {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
 }
 
 code {
@@ -778,16 +893,135 @@ code {
 }
 
 /* ============================================
+   ASCII Flow Diagrams - Centered
+   ============================================ */
+/* Center text/plaintext code blocks (flow diagrams) */
+.highlight:has(code[data-lang="text"]),
+.highlight:has(code[data-lang="plaintext"]),
+.highlight:has(code[data-lang="fallback"]) {
+  text-align: center !important;
+}
+
+.highlight:has(code[data-lang="text"]) pre,
+.highlight:has(code[data-lang="plaintext"]) pre,
+.highlight:has(code[data-lang="fallback"]) pre {
+  text-align: center !important;
+}
+
+.highlight code[data-lang="text"],
+.highlight code[data-lang="plaintext"],
+.highlight code[data-lang="fallback"] {
+  display: inline-block !important;
+  text-align: left !important;
+  white-space: pre !important;
+}
+
+/* ============================================
+   Chroma Syntax Highlighting (Monokai theme)
+   ============================================ */
+.chroma { background-color: #474747; }
+.chroma .lntd { vertical-align: top; padding: 0; margin: 0; border: 0; }
+.chroma .lntable { border-spacing: 0; padding: 0; margin: 0; border: 0; }
+.chroma .hl { background-color: #3c3d38; }
+.chroma .lnt { color: #7f7f7f; margin-right: 0.4em; padding: 0 0.4em; }
+.chroma .ln { color: #7f7f7f; margin-right: 0.4em; padding: 0 0.4em; }
+.chroma .line { display: block; }
+.chroma .k { color: #66d9ef } /* Keyword */
+.chroma .kc { color: #66d9ef } /* KeywordConstant */
+.chroma .kd { color: #66d9ef } /* KeywordDeclaration */
+.chroma .kn { color: #f92672 } /* KeywordNamespace */
+.chroma .kp { color: #66d9ef } /* KeywordPseudo */
+.chroma .kr { color: #66d9ef } /* KeywordReserved */
+.chroma .kt { color: #66d9ef } /* KeywordType */
+.chroma .n { color: #f8f8f2 } /* Name */
+.chroma .na { color: #a6e22e } /* NameAttribute */
+.chroma .nb { color: #f8f8f2 } /* NameBuiltin */
+.chroma .nc { color: #a6e22e } /* NameClass */
+.chroma .no { color: #66d9ef } /* NameConstant */
+.chroma .nd { color: #a6e22e } /* NameDecorator */
+.chroma .nf { color: #a6e22e } /* NameFunction */
+.chroma .ni { color: #f8f8f2 } /* NameEntity */
+.chroma .nl { color: #f8f8f2 } /* NameLabel */
+.chroma .nn { color: #f8f8f2 } /* NameNamespace */
+.chroma .nt { color: #f92672 } /* NameTag */
+.chroma .nv { color: #f8f8f2 } /* NameVariable */
+.chroma .s { color: #e6db74 } /* LiteralString */
+.chroma .sa { color: #e6db74 } /* LiteralStringAffix */
+.chroma .sb { color: #e6db74 } /* LiteralStringBacktick */
+.chroma .sc { color: #e6db74 } /* LiteralStringChar */
+.chroma .sd { color: #e6db74 } /* LiteralStringDoc */
+.chroma .s2 { color: #e6db74 } /* LiteralStringDouble */
+.chroma .se { color: #ae81ff } /* LiteralStringEscape */
+.chroma .sh { color: #e6db74 } /* LiteralStringHeredoc */
+.chroma .si { color: #e6db74 } /* LiteralStringInterpol */
+.chroma .sx { color: #e6db74 } /* LiteralStringOther */
+.chroma .sr { color: #e6db74 } /* LiteralStringRegex */
+.chroma .s1 { color: #e6db74 } /* LiteralStringSingle */
+.chroma .ss { color: #e6db74 } /* LiteralStringSymbol */
+.chroma .m { color: #ae81ff } /* LiteralNumber */
+.chroma .mb { color: #ae81ff } /* LiteralNumberBin */
+.chroma .mf { color: #ae81ff } /* LiteralNumberFloat */
+.chroma .mh { color: #ae81ff } /* LiteralNumberHex */
+.chroma .mi { color: #ae81ff } /* LiteralNumberInteger */
+.chroma .il { color: #ae81ff } /* LiteralNumberIntegerLong */
+.chroma .mo { color: #ae81ff } /* LiteralNumberOct */
+.chroma .o { color: #f92672 } /* Operator */
+.chroma .ow { color: #f92672 } /* OperatorWord */
+.chroma .p { color: #f8f8f2 } /* Punctuation */
+.chroma .c { color: #75715e } /* Comment */
+.chroma .ch { color: #75715e } /* CommentHashbang */
+.chroma .cm { color: #75715e } /* CommentMultiline */
+.chroma .c1 { color: #75715e } /* CommentSingle */
+.chroma .cs { color: #75715e } /* CommentSpecial */
+.chroma .cp { color: #75715e } /* CommentPreproc */
+.chroma .cpf { color: #75715e } /* CommentPreprocFile */
+.chroma .gd { color: #f92672 } /* GenericDeleted */
+.chroma .ge { font-style: italic } /* GenericEmph */
+.chroma .gi { color: #a6e22e } /* GenericInserted */
+.chroma .gs { font-weight: bold } /* GenericStrong */
+.chroma .gu { color: #75715e } /* GenericSubheading */
+.chroma .err { color: #f92672; background-color: transparent } /* Error - match tag color */
+
+/* Ensure ASCII art and diagrams render correctly */
+/* Override Hugo's display:flex on line spans */
+.highlight pre code > span,
+.highlight pre code > span[style] {
+  display: block !important;
+  line-height: 1 !important;
+}
+
+.highlight pre code span,
+.highlight pre code > span > span,
+pre code span {
+  font-family: monospace !important;
+  font-size: 14px !important;
+  line-height: 1 !important;
+  display: inline !important;
+}
+
+/* ============================================
    Tables
    ============================================ */
 table {
   width: 100% !important;
   border-collapse: collapse !important;
+  border-spacing: 0 !important;
   margin: 1.5rem 0 !important;
   background: var(--card-bg) !important;
   border-radius: 12px !important;
   overflow: hidden !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+  display: table !important;
+  table-layout: fixed !important;
+}
+
+thead {
+  background: var(--accent-secondary) !important;
+  width: 100% !important;
+}
+
+thead tr {
+  background: var(--accent-secondary) !important;
 }
 
 th {
@@ -798,6 +1032,11 @@ th {
   text-align: left !important;
   padding: 0.875rem 1rem !important;
   font-size: 0.85rem !important;
+  border: none !important;
+}
+
+tbody {
+  background: var(--card-bg) !important;
 }
 
 td {
@@ -805,13 +1044,14 @@ td {
   border-bottom: 1px solid var(--border-light) !important;
   color: var(--text-primary) !important;
   font-size: 0.9rem !important;
+  background: transparent !important;
 }
 
 tr:last-child td {
   border-bottom: none !important;
 }
 
-tr:hover {
+tbody tr:hover {
   background: rgba(255, 155, 122, 0.05) !important;
 }
 
@@ -1056,30 +1296,6 @@ hr {
 }
 
 /* ============================================
-   Transparent Background for All Images
-   (except sidebar-profile)
-   ============================================ */
-img {
-  background: transparent !important;
-}
-
-/* Remove box-shadow/background effects from images (except sidebar) */
-.profile img,
-.post-content img,
-.hero-illustration img,
-main img,
-article img {
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
-/* Keep sidebar profile image styling */
-.sidebar-profile img {
-  background: var(--card-bg) !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
-}
-
-/* ============================================
    Responsive Design
    ============================================ */
 
@@ -1187,33 +1403,6 @@ article img {
   main, .main {
     max-width: 1300px !important;
   }
-}
-
-/* ============================================
-   Force Transparent Backgrounds for Images
-   ============================================ */
-
-/* Index/Home page image */
-.profile img,
-.profile-mode img,
-.home img {
-  background: transparent !important;
-  background-color: transparent !important;
-}
-
-/* About page image */
-.post-single .post-content > p:first-child img,
-.single .post-content > p:first-child img,
-.about img {
-  background: transparent !important;
-  background-color: transparent !important;
-}
-
-/* Remove background from parent containers */
-.profile,
-.profile-mode,
-.post-content > p:first-child {
-  background: transparent !important;
 }
 
 /* ============================================

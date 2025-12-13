@@ -120,10 +120,18 @@ minify.disableXML = true
 # Markup settings
 [markup]
   [markup.highlight]
+    anchorLineNos = false
     codeFences = true
     guessSyntax = true
+    hl_Lines = ""
+    lineAnchors = ""
+    lineNoStart = 1
     lineNos = false
-    style = "github"
+    lineNumbersInTable = true
+    noClasses = false
+    noHl = false
+    style = "monokai"
+    tabWidth = 4
   
   [markup.goldmark.renderer]
     unsafe = true
