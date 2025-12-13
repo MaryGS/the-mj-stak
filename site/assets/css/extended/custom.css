@@ -568,12 +568,6 @@ footer.entry-footer,
   border-bottom: 2px solid var(--accent-secondary) !important;
 }
 
-.posts-grid {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 24px !important;
-}
-
 .page-header {
   text-align: center;
   margin-bottom: 2rem;
@@ -1312,9 +1306,16 @@ hr {
   }
   
   .posts-grid,
+  .home .posts-grid,
+  .list .posts-grid,
+  .home main.main > article,
+  .home main.main > .posts-group,
+  .list main.main > article,
+  .list main.main > .posts-group,
   main.main > article,
   main.main > .posts-group,
-  .archive-posts {
+  .archive-posts,
+  .list .archive-posts {
     grid-template-columns: 1fr !important;
   }
   
@@ -1368,9 +1369,16 @@ hr {
   }
   
   .posts-grid,
+  .home .posts-grid,
+  .list .posts-grid,
+  .home main.main > article,
+  .home main.main > .posts-group,
+  .list main.main > article,
+  .list main.main > .posts-group,
   main.main > article,
   main.main > .posts-group,
-  .archive-posts {
+  .archive-posts,
+  .list .archive-posts {
     grid-template-columns: repeat(2, 1fr) !important;
   }
   
@@ -1391,9 +1399,16 @@ hr {
   }
   
   .posts-grid,
+  .home .posts-grid,
+  .list .posts-grid,
+  .home main.main > article,
+  .home main.main > .posts-group,
+  .list main.main > article,
+  .list main.main > .posts-group,
   main.main > article,
   main.main > .posts-group,
-  .archive-posts {
+  .archive-posts,
+  .list .archive-posts {
     grid-template-columns: repeat(3, 1fr) !important;
   }
 }
